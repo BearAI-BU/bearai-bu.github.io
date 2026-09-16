@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict');
+const {classify,next}=require('../events.js');
+const now=Date.parse('2030-01-01T12:00:00Z');
+const data=[{id:'later',start:'2030-01-03T12:00:00Z'},{id:'past',start:'2029-12-31T12:00:00Z'},{id:'undated',start:null},{id:'next',start:'2030-01-01T08:00:00-06:00'},{id:'ongoing',start:'2030-01-01T11:00:00Z',end:'2030-01-01T13:00:00Z'},{id:'cancelled',start:'2030-01-01T12:01:00Z',cancelled:true},{id:'invalid',start:'not-a-date'},{id:'hidden',start:'2030-01-01T12:00:01Z',hidden:true}];
+assert.equal(next(data,now).id,'next');
+assert.deepEqual(classify(data,now).upcoming.map(e=>e.id),['next','later']);
+assert.deepEqual(classify(data,now).ongoing.map(e=>e.id),['ongoing']);
+assert.deepEqual(classify(data,now).past.map(e=>e.id),['past']);
+assert.equal(next([],now),null);
+assert.equal(next(data,Date.parse('2031-01-01T00:00:00Z')),null);
+assert.deepEqual(classify(data,now).undated.map(e=>e.id),['undated','invalid']);
+assert.equal(next([{start:'2030-01-01T12:00:00Z'}],now),null);
+console.log('Event selection passed: chronological order, offsets, past/ongoing/undated, cancelled/hidden, empty state, and elapsed dates.');
