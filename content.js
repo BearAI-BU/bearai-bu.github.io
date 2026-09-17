@@ -24,7 +24,7 @@ window.BEARAI = {
       "name": "Lucas",
       "role": "Vice President",
       "major": "Computer Science (Software Engineering concentration)",
-      "graduationYear": "Spring 2027",
+      "graduationYear": "Fall 2027",
       "photo": "assets/lucas.jpg",
       "position": "50% 40%"
     },
