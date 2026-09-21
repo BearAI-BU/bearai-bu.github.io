@@ -70,14 +70,17 @@ window.BEARAI = {
   "events": [
     {
       "id": "general-interest",
-      "title": "General interest meeting",
-      "description": "Get to know BearAI, meet the officers, and share what you want to learn and build. Complete beginners and students from every major are welcome.",
-      "start": null,
-      "end": null,
-      "location": null,
-      "virtual": null,
-      "url": null,
-      "draft": true
+      "title": "BearAI General Interest Meeting",
+      "description": "Join us for BearAI’s General Interest Meeting in Cashion C311! Meet the officers, learn about the club, and share what you’d like to explore in AI this semester. All majors and experience levels are welcome, and we’ll have Shorty’s pizza!",
+      "start": "2026-09-24T19:30:00-05:00",
+      "end": "2026-09-24T20:30:00-05:00",
+      "timeZone": "America/Chicago",
+      "location": "Cashion C311",
+      "food": "Shorty’s pizza will be available.",
+      "image": "assets/gim-september-2026.png",
+      "imageAlt": "Promotional artwork for the BearAI General Interest Meeting showing BearAI branding in a classroom.",
+      "imageCaption": "General Interest Meeting promotional artwork.",
+      "photos": []
     },
     {
       "id": "picnic-palooza-2026",
@@ -88,7 +91,6 @@ window.BEARAI = {
       "location": "Hurd Welcome Center (Grand Ballroom)",
       "url": "https://www.instagram.com/p/Dcls16MEa3j/",
       "urlLabel": "Picnic Palooza event post",
-      "draft": false,
       "photos": [
         {
           "src": "assets/picnic-palooza-flyer.jpg",
@@ -115,7 +117,9 @@ window.BEARAI = {
       "details": "A free, come-and-go gathering for ECS students, alumni, faculty, staff, prospective students, former faculty/staff, and families during Baylor Family Weekend, before the 3 PM football kickoff against Louisiana Tech. Food begins at 12 PM; giveaway items are available while supplies last.",
       "mealNote": "The September 12 meal reservation deadline has passed. A reserved meal is not guaranteed; check with the organizer about availability.",
       "sponsor": "Phillips 66",
-      "draft": false
+      "timeZone": "America/Chicago",
+      "flyerAlt": "Baylor ECS Tailgate promotional flyer for September 19, 2026 at Mayborn Pavilion.",
+      "photos": []
     }
   ],
   "projects": [],

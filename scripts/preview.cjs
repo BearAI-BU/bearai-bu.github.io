@@ -6,5 +6,5 @@ http.createServer((req,res)=>{
   const pathname = decodeURIComponent(new URL(req.url,'http://localhost').pathname);
   const file = path.resolve(root, '.'+(pathname==='/'?'/index.html':pathname));
   if(!file.startsWith(root+path.sep)){res.writeHead(403);res.end();return;}
-  fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end('Not found');return;}res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.png':'image/png','.jpg':'image/jpeg','.svg':'image/svg+xml','.pdf':'application/pdf','.md':'text/plain'})[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'});res.end(data);});
+  fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);res.end('Not found');return;}res.writeHead(200,{'Content-Type':({'.html':'text/html; charset=utf-8','.css':'text/css','.js':'text/javascript','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.webp':'image/webp','.svg':'image/svg+xml','.pdf':'application/pdf','.md':'text/plain'})[path.extname(file)]||'application/octet-stream','Cache-Control':'no-store'});res.end(data);});
 }).listen(4173,'127.0.0.1',()=>console.log('BearAI preview: http://127.0.0.1:4173'));

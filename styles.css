@@ -83,3 +83,5 @@ main{background:radial-gradient(ellipse 560px 420px at calc(50% + 340px) 360px,#
 .connection-category > h2 + p {margin-top:0;margin-bottom:24px}
 .connection-category > .connection-source {margin-top:0;margin-bottom:24px;font-size:.85rem;line-height:1.7}
 .connection-source a {text-decoration:underline;text-underline-offset:3px}
+
+.event-promotion{margin:18px 0 24px}.event-promotion .event-flyer{margin:0 auto 10px}.event-promotion figcaption{color:var(--muted);font-size:.85rem}

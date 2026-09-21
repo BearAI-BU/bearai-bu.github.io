@@ -11,3 +11,14 @@ assert.equal(next(data,Date.parse('2031-01-01T00:00:00Z')),null);
 assert.deepEqual(classify(data,now).undated.map(e=>e.id),['undated','invalid']);
 assert.equal(next([{start:'2030-01-01T12:00:00Z'}],now),null);
 console.log('Event selection passed: chronological order, offsets, past/ongoing/undated, cancelled/hidden, empty state, and elapsed dates.');
+
+const meeting={id:'gim',start:'2026-09-24T19:30:00-05:00',end:'2026-09-24T20:30:00-05:00'};
+assert.equal(classify([meeting],Date.parse('2026-09-25T00:29:59Z')).upcoming.length,1);
+assert.equal(classify([meeting],Date.parse('2026-09-25T00:30:00Z')).ongoing.length,1);
+assert.equal(classify([meeting],Date.parse('2026-09-25T01:29:59Z')).past.length,0);
+assert.equal(classify([meeting],Date.parse('2026-09-25T01:30:00Z')).past.length,1);
+assert.equal(next([meeting],Date.parse(meeting.start)),null);
+const winter={start:'2026-12-01T19:30:00-06:00',end:'2026-12-01T20:30:00-06:00'};
+assert.equal(classify([winter],Date.parse('2026-12-02T02:29:59Z')).ongoing.length,1);
+assert.equal(classify([winter],Date.parse('2026-12-02T02:30:00Z')).past.length,1);
+console.log('Central-time summer/winter offsets and exact start/end boundaries passed.');
