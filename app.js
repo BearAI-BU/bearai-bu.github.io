@@ -17,6 +17,12 @@ function eventDate(e){
  const date=value=>new Intl.DateTimeFormat('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:zone}).format(new Date(value));
  const time=value=>new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:new Date(value).getUTCMinutes()===0?undefined:'2-digit',timeZone:zone}).format(new Date(value));
  const end=e.end&&Number.isFinite(Date.parse(e.end))?e.end:null;
+ if(e.id==='general-interest'){
+  const startTime=time(e.start),endTime=end?time(end):null;
+  const sameDay=end&&date(e.start)===date(end);
+  const sharedPeriod=sameDay&&startTime.match(/(AM|PM)$/)?.[0]===endTime.match(/(AM|PM)$/)?.[0];
+  return date(e.start)+' · '+(sharedPeriod?startTime.replace(/\s*(AM|PM)$/,''):startTime)+(end?'–'+(sameDay?'':date(end)+' · ')+endTime:'');
+ }
  return date(e.start)+' · '+time(e.start)+(end?'–'+(date(end)!==date(e.start)?date(end)+' · ':'')+time(end):'')+' ('+zone+')';
 }
 function eventMedia(e){return `${e.image?`<figure class="event-promotion"><img class="event-flyer" src="${esc(e.image)}" alt="${esc(e.imageAlt||e.title+' promotional artwork')}">${e.imageCaption?`<figcaption>${esc(e.imageCaption)}</figcaption>`:''}</figure>`:''}${e.flyer?`<figure class="event-promotion"><img class="event-flyer" src="${esc(e.flyer)}" alt="${esc(e.flyerAlt||e.title+' promotional flyer')}"><figcaption>Promotional flyer</figcaption></figure>`:''}`;}
