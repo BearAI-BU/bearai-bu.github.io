@@ -71,7 +71,7 @@ window.BEARAI = {
     {
       "id": "general-interest",
       "title": "BearAI General Interest Meeting",
-      "description": "BearAI held its General Interest Meeting on September 24 in Cashion C311. Aubrey and Alessandro spoke with the group, Lucas highlighted the AI Venture Challenge and discussed AI interests from the club’s survey, and Alessandro answered questions about the BearAI website.",
+      "description": "BearAI held its General Interest Meeting on September 24 in Cashion C311. All officers spoke to the group, including Chelsey and Noelle. Lucas highlighted the AI Venture Challenge and discussed AI interests from the club’s survey, and Alessandro answered questions about the BearAI website.",
       "start": "2026-09-24T19:30:00-05:00",
       "end": "2026-09-24T20:30:00-05:00",
       "timeZone": "America/Chicago",
@@ -101,7 +101,8 @@ window.BEARAI = {
       ],
       "mainPhotoIndex": 0,
       "flyer": "assets/gim-september-2026.png",
-      "flyerAlt": "Promotional artwork for the BearAI General Interest Meeting showing BearAI branding in a classroom."
+      "flyerAlt": "Promotional artwork for the BearAI General Interest Meeting showing BearAI branding in a classroom.",
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
     },
     {
       "id": "picnic-palooza-2026",
