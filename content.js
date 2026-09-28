@@ -71,16 +71,37 @@ window.BEARAI = {
     {
       "id": "general-interest",
       "title": "BearAI General Interest Meeting",
-      "description": "Join us for BearAI’s General Interest Meeting in Cashion C311! Meet the officers, learn about the club, and share what you’d like to explore in AI this semester. All majors and experience levels are welcome, and we’ll have Shorty’s pizza!",
+      "description": "BearAI held its General Interest Meeting on September 24 in Cashion C311. Aubrey and Alessandro spoke with the group, Lucas highlighted the AI Venture Challenge and discussed AI interests from the club’s survey, and Alessandro answered questions about the BearAI website.",
       "start": "2026-09-24T19:30:00-05:00",
       "end": "2026-09-24T20:30:00-05:00",
       "timeZone": "America/Chicago",
       "location": "Cashion C311",
-      "food": "Shorty’s pizza will be available.",
-      "image": "assets/gim-september-2026.png",
-      "imageAlt": "Promotional artwork for the BearAI General Interest Meeting showing BearAI branding in a classroom.",
-      "imageCaption": "General Interest Meeting promotional artwork.",
-      "photos": []
+      "food": "Shorty’s pizza was available.",
+      "photos": [
+        {
+          "src": "assets/gim-aubrey-alessandro.png",
+          "alt": "Aubrey and Alessandro speaking at BearAI’s September 24 General Interest Meeting.",
+          "caption": "Aubrey and Alessandro speaking at BearAI’s September 24 General Interest Meeting."
+        },
+        {
+          "src": "assets/gim-alessandro-questions.png",
+          "alt": "Alessandro answering questions about the BearAI website at the General Interest Meeting.",
+          "caption": "Alessandro answering questions about the BearAI website at the General Interest Meeting."
+        },
+        {
+          "src": "assets/gim-lucas-ai-venture.png",
+          "alt": "Lucas highlighting the AI Venture Challenge at the General Interest Meeting.",
+          "caption": "Lucas highlighting the AI Venture Challenge at the General Interest Meeting."
+        },
+        {
+          "src": "assets/gim-lucas-survey.png",
+          "alt": "Lucas discussing AI interests shared through the club’s interest survey.",
+          "caption": "Lucas discussing AI interests shared through the club’s interest survey."
+        }
+      ],
+      "mainPhotoIndex": 0,
+      "flyer": "assets/gim-september-2026.png",
+      "flyerAlt": "Promotional artwork for the BearAI General Interest Meeting showing BearAI branding in a classroom."
     },
     {
       "id": "picnic-palooza-2026",
@@ -120,6 +141,15 @@ window.BEARAI = {
       "timeZone": "America/Chicago",
       "flyerAlt": "Baylor ECS Tailgate promotional flyer for September 19, 2026 at Mayborn Pavilion.",
       "photos": []
+    },
+    {
+      "id": "workshop-1",
+      "title": "Workshop 1",
+      "status": "Details pending",
+      "description": "Workshop 1 is planned. Details will be shared when confirmed.",
+      "start": null,
+      "end": null,
+      "location": null
     }
   ],
   "projects": [],
@@ -161,6 +191,14 @@ window.BEARAI = {
     }
   ],
   "communityHighlights": [
+    {
+      "eventId": "general-interest",
+      "photoIndex": 0
+    },
+    {
+      "eventId": "general-interest",
+      "photoIndex": 1
+    },
     {
       "eventId": "picnic-palooza-2026",
       "photoIndex": 1

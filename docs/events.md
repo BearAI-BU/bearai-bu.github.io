@@ -14,7 +14,7 @@
 
 ## Complete GIM example
 
-This record already exists. Edit it rather than duplicating it. For another event, change the ID and all relevant facts and media references.
+This is the original pre-meeting GIM example. The current record now contains its recap and photos; preserve those when editing it rather than replacing it with this historical example. For another event, change the ID and all relevant facts and media references.
 
 ```json
 {
@@ -67,6 +67,8 @@ Classification runs when a page renders: first load, reload, or navigation to an
 | `sponsor` | Confirmed event sponsor, not a site-wide partner |
 | `recap` | Approved account of what happened; omit until supplied |
 | `photos` | Gallery records: `src`, `alt`, `caption` |
+| `mainPhotoIndex` | Zero-based gallery photo used as the main image; the same photo remains one gallery entry. A retained flyer is linked separately. |
+| `status` | Optional visible status, such as `Details pending` for an undated planned activity |
 | `hidden`, `cancelled` | Optional booleans controlling visibility |
 
 Missing links are omitted. Use `"start": null` and `"end": null` for an unconfirmed date and `"location": null` for an unknown location. Do not guess a date to make a card appear. No draft flag is needed.
