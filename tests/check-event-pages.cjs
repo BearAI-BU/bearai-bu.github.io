@@ -31,3 +31,10 @@ const example=JSON.parse(read('docs/events.md').match(/```json\s*([\s\S]*?)```/)
 for(const key of ['id','start','end','timeZone','location'])assert.equal(example[key],gim[key]);
 assert(!/Visual draft|This preview needs/i.test(read('app.js')+read('index.html')));
 console.log('Homepage, event archive, detail routes, promotional media, and documented GIM example passed.');
+for(const article of events.matchAll(/<article\b[^>]*id="([^"]+)"[\s\S]*?<\/article>/g)){
+ assert((article[0].match(/<img\b/g)||[]).length<=2,article[1]+' has too many preview images');
+ assert(article[0].includes('Event details &amp; gallery')||article[0].includes('Event details & gallery'));
+}
+assert.equal((detail.match(/class="past-gallery"[\s\S]*?<\/div>/)?.[0].match(/<img\b/g)||[]).length,4);
+assert(vm.runInContext("eventDetail('picnic-palooza-2026')",context).includes('← All events'));
+console.log('Event previews limited to two images; full GIM gallery and Picnic return link preserved.');

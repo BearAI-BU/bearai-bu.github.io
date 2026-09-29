@@ -71,7 +71,7 @@ window.BEARAI = {
     {
       "id": "general-interest",
       "title": "BearAI General Interest Meeting",
-      "description": "BearAI held its General Interest Meeting on September 24 in Cashion C311. All officers spoke to the group, including Chelsey and Noelle. Lucas highlighted the AI Venture Challenge and discussed AI interests from the club’s survey, and Alessandro answered questions about the BearAI website.",
+      "description": "BearAI held its General Interest Meeting on September 24 in Cashion C311. All officers spoke about what to expect from BearAI, shared what students wanted from the club based on survey responses, gave a quick tour of the website, and highlighted Baylor’s AI Venture Challenge.",
       "start": "2026-09-24T19:30:00-05:00",
       "end": "2026-09-24T20:30:00-05:00",
       "timeZone": "America/Chicago",

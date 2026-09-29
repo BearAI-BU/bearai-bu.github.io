@@ -85,3 +85,6 @@ main{background:radial-gradient(ellipse 560px 420px at calc(50% + 340px) 360px,#
 .connection-source a {text-decoration:underline;text-underline-offset:3px}
 
 .event-promotion{margin:18px 0 24px}.event-promotion .event-flyer{margin:0 auto 10px}.event-promotion figcaption{color:var(--muted);font-size:.85rem}
+
+/* Event media keeps the full image, with no colored letterboxing. */
+.past-gallery img,.event-promotion img{height:auto;max-height:none;object-fit:contain;background:transparent;border-radius:12px;display:block}.event-promotion .event-flyer{max-width:850px}.past-gallery{align-items:start}.past-gallery figure{min-width:0}
