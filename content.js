@@ -26,6 +26,7 @@ window.BEARAI = {
       "major": "Computer Science (Software Engineering concentration)",
       "graduationYear": "Fall 2027",
       "photo": "assets/lucas.jpg",
+      "scale": 1.8,
       "position": "50% 40%"
     },
     {
@@ -42,6 +43,7 @@ window.BEARAI = {
       "major": "Accounting and Management Information Systems (MIS); Baylor Business Scholar",
       "graduationYear": "Spring 2027",
       "photo": "assets/chelsey.jpg",
+      "scale": 1.9,
       "position": "50% 34%"
     },
     {
@@ -134,6 +136,7 @@ window.BEARAI = {
       "location": "Mayborn Pavilion, next to the Mayborn Museum",
       "description": "BearAI will be at the ECS Tailgate! Stop by our table, meet the officers, and come out to support the club during Baylor Family Weekend. We’d love to see you there before the game.",
       "flyer": "assets/ecs-tailgate-2026.png",
+      "previewPhotoIndex": 0,
       "url": "https://www.ecs.baylor.edu/event/2026/1555929",
       "registration": "https://www9.baylor.edu/ers/register.aspx?event_id=1553380",
       "details": "A free, come-and-go gathering for ECS students, alumni, faculty, staff, prospective students, former faculty/staff, and families during Baylor Family Weekend, before the 3 PM football kickoff against Louisiana Tech. Food begins at 12 PM; giveaway items are available while supplies last.",

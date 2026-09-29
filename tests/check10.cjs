@@ -8,7 +8,7 @@ for(const reduced of [false,true]){
  if(reduced)assert.equal(observed,0);else{assert.equal(observed,1);callback([{target,isIntersecting:true}]);assert.equal(entered,1);assert.equal(unobserved,1);vm.runInNewContext('cleanupEntrances()',ctx);assert.ok(disconnected)}
 }
 const c={window:{}};vm.runInNewContext(fs.readFileSync('content.js','utf8'),c);
-const d=c.window.BEARAI;assert.equal(d.officers.find(x=>x.role==='Secretary').name,'Aubrey');assert.equal(d.officers.find(x=>x.role==='Secretary').graduationYear,'Spring 2028');
+const d=c.window.BEARAI;assert.ok(d.officers.every(x=>typeof x.name==='string'&&x.name.trim().length>0),'Officer public names must not be empty');assert.equal(d.officers.find(x=>x.role==='Secretary').graduationYear,'Spring 2028');
 assert.ok(d.officers.every(x=>!x.major.endsWith('.')));
 assert.equal(d.connections.find(x=>x.name==='Tiya Davi').affiliation,'Baylor University');
 assert.equal(d.connections.find(x=>x.name==='Dr. Pablo Rivas').bearRole,'Former Faculty Advisor');

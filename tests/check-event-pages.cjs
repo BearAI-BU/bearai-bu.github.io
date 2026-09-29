@@ -24,7 +24,7 @@ assert.equal(api.next([planned,{id:'confirmed',start:'2026-10-01T19:00:00-05:00'
 assert(events.indexOf('ECS Tailgate')>events.indexOf('Past events'));
 assert(!events.includes('Event photos coming soon.'));
 const tailgate=vm.runInContext("eventDetail('ecs-tailgate-2026')",context);
-for(const image of ['ecs-tailgate-bearai.jpg','ecs-tailgate-hat.jpg']){assert(tailgate.includes(image));assert(!events.includes(image));}
+for(const image of ['ecs-tailgate-bearai.jpg','ecs-tailgate-hat.jpg']){assert(tailgate.includes(image));assert.equal(events.includes(image),image==='ecs-tailgate-bearai.jpg');}
 assert(community.includes('ecs-tailgate-bearai.jpg'));assert(!community.includes('ecs-tailgate-hat.jpg'));
 assert(community.includes('#/events/ecs-tailgate-2026'));
 assert(!tailgate.includes('Event photos coming soon.'));assert(events.includes('Promotional flyer'));
@@ -43,3 +43,7 @@ for(const article of events.matchAll(/<article\b[^>]*id="([^"]+)"[\s\S]*?<\/arti
 assert.equal((detail.match(/class="past-gallery"[\s\S]*?<\/div>/)?.[0].match(/<img\b/g)||[]).length,4);
 assert(vm.runInContext("eventDetail('picnic-palooza-2026')",context).includes('← All events'));
 console.log('Event previews limited to two images; full GIM gallery and Picnic return link preserved.');
+
+const peopleHtml=vm.runInContext("people()",context);
+for(const officer of context.window.BEARAI.officers)assert(peopleHtml.includes(officer.name));
+for(const [photo,scale] of [["lucas.jpg",1.8],["chelsey.jpg",1.9]]){const officer=context.window.BEARAI.officers.find(o=>o.photo.endsWith(photo));assert.equal(officer.scale,scale);}
