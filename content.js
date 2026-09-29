@@ -14,14 +14,14 @@ window.BEARAI = {
   },
   "officers": [
     {
-      "name": "Alessandro",
+      "name": "Alessandro Diaz",
       "role": "President",
       "major": "Computer Science (CS Concentration) + Mathematics Double Major",
       "graduationYear": "Spring 2028",
       "photo": "assets/alessandro.jpg"
     },
     {
-      "name": "Lucas",
+      "name": "Lucas Ulibarri",
       "role": "Vice President",
       "major": "Computer Science (Software Engineering concentration)",
       "graduationYear": "Fall 2027",
@@ -29,7 +29,7 @@ window.BEARAI = {
       "position": "50% 40%"
     },
     {
-      "name": "Aubrey",
+      "name": "Aubrey Bedford",
       "role": "Secretary",
       "major": "Computer Science (Software Engineering concentration)",
       "graduationYear": "Spring 2028",
@@ -37,7 +37,7 @@ window.BEARAI = {
       "position": "65% 28%"
     },
     {
-      "name": "Chelsey",
+      "name": "Chelsey Byerly",
       "role": "Treasurer",
       "major": "Accounting and Management Information Systems (MIS); Baylor Business Scholar",
       "graduationYear": "Spring 2027",
@@ -45,7 +45,7 @@ window.BEARAI = {
       "position": "50% 34%"
     },
     {
-      "name": "Noelle",
+      "name": "Noelle Smith",
       "role": "Social Media & Outreach Chair",
       "major": "Environmental Science",
       "graduationYear": "Spring 2028",
