@@ -88,3 +88,8 @@ main{background:radial-gradient(ellipse 560px 420px at calc(50% + 340px) 360px,#
 
 /* Event media keeps the full image, with no colored letterboxing. */
 .past-gallery img,.event-promotion img{height:auto;max-height:none;object-fit:contain;background:transparent;border-radius:12px;display:block}.event-promotion .event-flyer{max-width:850px}.past-gallery{align-items:start}.past-gallery figure{min-width:0}
+/* Stack event actions without extending their individual underlines. */
+.event-row>.text-link{display:block;width:fit-content;max-width:100%}
+.event-row>.text-link+.text-link{margin-top:18px}
+.event-row .advisor-links{flex-direction:column;align-items:flex-start;gap:18px}
+.event-row .advisor-links+.text-link{margin-top:18px}
