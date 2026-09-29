@@ -141,7 +141,10 @@ window.BEARAI = {
       "sponsor": "Phillips 66",
       "timeZone": "America/Chicago",
       "flyerAlt": "Baylor ECS Tailgate promotional flyer for September 19, 2026 at Mayborn Pavilion.",
-      "photos": []
+      "photos": [
+        {"src": "assets/ecs-tailgate-bearai.jpg", "alt": "Two people beside the BearAI display at the ECS Tailgate.", "caption": "BearAI at the ECS Tailgate at Mayborn Pavilion."},
+        {"src": "assets/ecs-tailgate-hat.jpg", "alt": "A Baylor Engineering and Computer Science cap and pennant on a table at the ECS Tailgate.", "caption": "Baylor Engineering and Computer Science gear at the ECS Tailgate."}
+      ]
     },
     {
       "id": "workshop-1",
@@ -203,7 +206,8 @@ window.BEARAI = {
     {
       "eventId": "picnic-palooza-2026",
       "photoIndex": 1
-    }
+    },
+    {"eventId": "ecs-tailgate-2026", "photoIndex": 0}
   ],
   "connections": [
     {

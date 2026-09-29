@@ -22,7 +22,12 @@ const planned=context.window.BEARAI.events.find(e=>e.id==='workshop-1');
 assert(api.classify([planned],now).undated.includes(planned));assert.equal(api.classify([planned],now).past.length,0);
 assert.equal(api.next([planned,{id:'confirmed',start:'2026-10-01T19:00:00-05:00'}],now).id,'confirmed');
 assert(events.indexOf('ECS Tailgate')>events.indexOf('Past events'));
-assert(events.includes('Event photos coming soon.'));assert(events.includes('Promotional flyer'));
+assert(!events.includes('Event photos coming soon.'));
+const tailgate=vm.runInContext("eventDetail('ecs-tailgate-2026')",context);
+for(const image of ['ecs-tailgate-bearai.jpg','ecs-tailgate-hat.jpg']){assert(tailgate.includes(image));assert(!events.includes(image));}
+assert(community.includes('ecs-tailgate-bearai.jpg'));assert(!community.includes('ecs-tailgate-hat.jpg'));
+assert(community.includes('#/events/ecs-tailgate-2026'));
+assert(!tailgate.includes('Event photos coming soon.'));assert(events.includes('Promotional flyer'));
 for(const e of context.window.BEARAI.events.filter(e=>!e.hidden&&!e.cancelled)){
  const html=vm.runInContext(`eventDetail(${JSON.stringify(e.id)})`,context);
  assert(!html.includes('Event not found.'));assert(html.includes('← All events'));
