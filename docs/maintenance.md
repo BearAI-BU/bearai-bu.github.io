@@ -124,3 +124,11 @@ To update an alumni destination, edit `affiliation`, `relationship`, logo fields
 `content.js` → `join` contains `connect` (Baylor Connect), `groupme`, `instagram`, `survey`, and `email`. Change the appropriate value, then test the Join page. Email is an address without `mailto:`; the template adds it. Other links should be HTTPS. Explanatory wording, including the interest-survey description, is in `join()` in `app.js`. Leave unavailable links empty rather than inventing them; the existing template shows a disabled coming-soon button.
 
 Navigation is the `routes` array near the top of `app.js`; page functions are mapped in `pages` near the bottom. Footer links are a separate template in the same file. To rename a label, change the label only, keeping the route stable. Adding an entirely new page requires a page function, a `pages` entry, and a `routes` entry, plus any desired footer link. This is optional development work, not necessary for normal data updates. Test desktop navigation, mobile Menu, Back, and direct `#/route` links.
+
+### Semester plans and confirmation
+
+Edit the same records in `content.js` → `events`; do not create a second copy for the table or homepage. Set `semester` to `Fall 2026`, `planOrder` to its row order, and `status` to `Tentative`. Use `proposedDate` (`YYYY-MM-DD`) for a proposed day without inventing a time; use `null` for an unknown date. Tentative events stay in the semester table and never move into Past Events automatically.
+
+Only after approval, change `status` to `Confirmed` and enter the confirmed `start` and `end` with their correct time-zone offsets. Confirmed future events appear in Upcoming Events and take priority on the homepage; their semester row stays visible and says Confirmed. Without a confirmed upcoming event, the homepage keeps a tentative planned activity. A proposed date alone is not confirmation.
+
+Keep `detailsPending: true` for a placeholder such as Workshop 1 until meaningful details are ready; this hides its gallery link. Add the original flyer under `flyer`. With photos, previews show that flyer first and one photo selected by `previewPhotoIndex` (or `mainPhotoIndex`, then photo 0); full collections stay on the detail page. Run `npm test` and `npm run build` before publishing.

@@ -9,7 +9,7 @@
 3. Copy a record and give it a unique lowercase, hyphenated `id`. This becomes an address like `#/events/general-interest`. Keep existing IDs when editing so shared links remain valid.
 4. Enter both dates with explicit time-zone offsets as shown below.
 5. Copy approved images into `assets/` and enter their paths. Images and registration links are optional.
-6. Run `npm start`; refresh Home and Events and follow **Full event details**. Check all facts, images, and links.
+6. Run `npm start`; refresh Home and Events and follow **Event details & gallery** (when meaningful details are available). Check all facts, images, and links.
 7. Run `npm test` and `npm run build`, then follow [routine publication](publishing.md#routine-publication).
 
 ## Complete GIM example
@@ -43,15 +43,15 @@ Provide an end at or after the start, including the next date when crossing midn
 
 `events.js` uses the visitor’s clock and absolute timestamps:
 
-- **Upcoming:** start is later than now, earliest first.
+- **Upcoming:** `status` is `Confirmed` and start is later than now, earliest first.
 - **Happening now:** start has arrived and end is still in the future.
 - **Past:** the end has arrived, including the exact end instant; newest start first.
-- **Dates to be confirmed:** no valid start with an offset.
+- **Fall 2026:** shared semester records, including tentative plans with a `proposedDate` or an unknown date. See the semester-plan guidance in [maintenance](maintenance.md#semester-plans-and-confirmation).
 - `hidden: true` or `cancelled: true` removes the event from lists, homepage selection, and its detail page.
 
 A missing, invalid, or earlier-than-start end falls back to the start. This prevents an event staying ongoing forever; it is not a substitute for providing the correct end.
 
-Home shows **one next upcoming event**, the earliest future start. It does not feature ongoing or ended events. With no future event, it shows the first undated record, if available, or a check-back message. Events retains the complete classified list.
+Home shows **one next confirmed upcoming event**, the earliest confirmed future start. It does not feature ongoing or ended events. Without one, it shows the first planned record, clearly labeled tentative, or a check-back message. Tentative plans never automatically become past events.
 
 Classification runs when a page renders: first load, reload, or navigation to another site page. A browser left on the same page has **no live timer** that moves cards at the exact end time; refresh it. No rebuild or scheduled deployment is needed just because time passes. Editing event data does require publication. An incorrect device clock can affect selection.
 
@@ -68,7 +68,7 @@ Classification runs when a page renders: first load, reload, or navigation to an
 | `recap` | Approved account of what happened; omit until supplied |
 | `photos` | Gallery records: `src`, `alt`, `caption` |
 | `mainPhotoIndex` | Zero-based gallery photo used as the main image; the same photo remains one gallery entry. A retained flyer is linked separately. |
-| `status` | Optional visible status, such as `Details pending` for an undated planned activity |
+| `status` | Use `Tentative` for plans and `Confirmed` only after approval |
 | `hidden`, `cancelled` | Optional booleans controlling visibility |
 
 Missing links are omitted. Use `"start": null` and `"end": null` for an unconfirmed date and `"location": null` for an unknown location. Do not guess a date to make a card appear. No draft flag is needed.

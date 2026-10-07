@@ -2,6 +2,7 @@ const assert=require('node:assert/strict');
 const {classify,next}=require('../events.js');
 const now=Date.parse('2030-01-01T12:00:00Z');
 const data=[{id:'later',start:'2030-01-03T12:00:00Z'},{id:'past',start:'2029-12-31T12:00:00Z'},{id:'undated',start:null},{id:'next',start:'2030-01-01T08:00:00-06:00'},{id:'ongoing',start:'2030-01-01T11:00:00Z',end:'2030-01-01T13:00:00Z'},{id:'cancelled',start:'2030-01-01T12:01:00Z',cancelled:true},{id:'invalid',start:'not-a-date'},{id:'hidden',start:'2030-01-01T12:00:01Z',hidden:true}];
+data.forEach(e=>e.status='Confirmed');
 assert.equal(next(data,now).id,'next');
 assert.deepEqual(classify(data,now).upcoming.map(e=>e.id),['next','later']);
 assert.deepEqual(classify(data,now).ongoing.map(e=>e.id),['ongoing']);
@@ -12,7 +13,7 @@ assert.deepEqual(classify(data,now).undated.map(e=>e.id),['undated','invalid']);
 assert.equal(next([{start:'2030-01-01T12:00:00Z'}],now),null);
 console.log('Event selection passed: chronological order, offsets, past/ongoing/undated, cancelled/hidden, empty state, and elapsed dates.');
 
-const meeting={id:'gim',start:'2026-09-24T19:30:00-05:00',end:'2026-09-24T20:30:00-05:00'};
+const meeting={status:'Confirmed',id:'gim',start:'2026-09-24T19:30:00-05:00',end:'2026-09-24T20:30:00-05:00'};
 assert.equal(classify([meeting],Date.parse('2026-09-25T00:29:59Z')).upcoming.length,1);
 assert.equal(classify([meeting],Date.parse('2026-09-25T00:30:00Z')).ongoing.length,1);
 assert.equal(classify([meeting],Date.parse('2026-09-25T01:29:59Z')).past.length,0);

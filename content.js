@@ -145,18 +145,104 @@ window.BEARAI = {
       "timeZone": "America/Chicago",
       "flyerAlt": "Baylor ECS Tailgate promotional flyer for September 19, 2026 at Mayborn Pavilion.",
       "photos": [
-        {"src": "assets/ecs-tailgate-bearai.jpg", "alt": "Two people beside the BearAI display at the ECS Tailgate.", "caption": "BearAI at the ECS Tailgate at Mayborn Pavilion."},
-        {"src": "assets/ecs-tailgate-hat.jpg", "alt": "A Baylor Engineering and Computer Science cap and pennant on a table at the ECS Tailgate.", "caption": "Baylor Engineering and Computer Science gear at the ECS Tailgate."}
+        {
+          "src": "assets/ecs-tailgate-bearai.jpg",
+          "alt": "Two people beside the BearAI display at the ECS Tailgate.",
+          "caption": "BearAI at the ECS Tailgate at Mayborn Pavilion."
+        },
+        {
+          "src": "assets/ecs-tailgate-hat.jpg",
+          "alt": "A Baylor Engineering and Computer Science cap and pennant on a table at the ECS Tailgate.",
+          "caption": "Baylor Engineering and Computer Science gear at the ECS Tailgate."
+        }
       ]
     },
     {
       "id": "workshop-1",
-      "title": "Workshop 1",
-      "status": "Details pending",
+      "title": "AI Workshop #1",
+      "status": "Tentative",
       "description": "Workshop 1 is planned. Details will be shared when confirmed.",
       "start": null,
       "end": null,
-      "location": null
+      "location": null,
+      "semester": "Fall 2026",
+      "planOrder": 1,
+      "proposedDate": "2026-10-15",
+      "flyer": "assets/workshop-1-2026.png",
+      "flyerAlt": "BearAI Workshop 1: Design a Prompt-Based Study Assistant. Part 1 of a 3-part workshop series covering prompting, context, hallucinations, evaluating AI responses, and testing explanations, summaries, and quiz questions.",
+      "detailsPending": true
+    },
+    {
+      "id": "service-event-2026",
+      "start": null,
+      "end": null,
+      "location": null,
+      "description": "Details will be shared when confirmed.",
+      "title": "Data Science / ACM-W / BearAI Service Event",
+      "semester": "Fall 2026",
+      "planOrder": 0,
+      "proposedDate": "2026-10-14",
+      "status": "Tentative"
+    },
+    {
+      "id": "resume-linkedin-2026",
+      "start": null,
+      "end": null,
+      "location": null,
+      "description": "Details will be shared when confirmed.",
+      "title": "Résumé + LinkedIn Workshop",
+      "semester": "Fall 2026",
+      "planOrder": 2,
+      "proposedDate": "2026-10-22",
+      "status": "Tentative"
+    },
+    {
+      "id": "spooky-stories-2026",
+      "start": null,
+      "end": null,
+      "location": null,
+      "description": "Details will be shared when confirmed.",
+      "title": "Spooky Stories with Data — Data Science × ACM-W × BearAI",
+      "semester": "Fall 2026",
+      "planOrder": 3,
+      "proposedDate": "2026-10-28",
+      "status": "Tentative"
+    },
+    {
+      "id": "workshop-2",
+      "start": null,
+      "end": null,
+      "location": null,
+      "description": "Details will be shared when confirmed.",
+      "title": "AI Workshop #2",
+      "semester": "Fall 2026",
+      "planOrder": 4,
+      "proposedDate": "2026-11-05",
+      "status": "Tentative"
+    },
+    {
+      "id": "lockheed-ai-speaker",
+      "start": null,
+      "end": null,
+      "location": null,
+      "description": "Details will be shared when confirmed.",
+      "title": "Potential Lockheed Martin AI Speaker",
+      "semester": "Fall 2026",
+      "planOrder": 5,
+      "proposedDate": null,
+      "status": "Tentative"
+    },
+    {
+      "id": "workshop-3",
+      "start": null,
+      "end": null,
+      "location": null,
+      "description": "Details will be shared when confirmed.",
+      "title": "AI Workshop #3",
+      "semester": "Fall 2026",
+      "planOrder": 6,
+      "proposedDate": "2026-11-19",
+      "status": "Tentative"
     }
   ],
   "projects": [],
@@ -210,7 +296,10 @@ window.BEARAI = {
       "eventId": "picnic-palooza-2026",
       "photoIndex": 1
     },
-    {"eventId": "ecs-tailgate-2026", "photoIndex": 0}
+    {
+      "eventId": "ecs-tailgate-2026",
+      "photoIndex": 0
+    }
   ],
   "connections": [
     {
