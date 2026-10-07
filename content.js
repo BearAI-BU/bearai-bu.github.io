@@ -159,18 +159,17 @@ window.BEARAI = {
     },
     {
       "id": "workshop-1",
-      "title": "AI Workshop #1",
-      "status": "Tentative",
-      "description": "Workshop 1 is planned. Details will be shared when confirmed.",
-      "start": null,
-      "end": null,
-      "location": null,
+      "title": "BearAI Workshop #1: Design an AI Study Assistant",
+      "status": "Confirmed",
+      "description": "Join BearAI for the first workshop in our three-part AI Study Assistant series. Learn how prompting, context, hallucinations, and response evaluation affect an AI chatbot’s responses. Using sample course notes, you’ll design and improve your own study-assistant prompt by testing explanations, summaries, quizzes, and other study features.\n\nNo prior AI or programming experience is required. Please bring a laptop.",
+      "start": "2026-10-15T19:30:00-05:00",
+      "end": "2026-10-15T20:30:00-05:00",
+      "location": "Cashion C311",
       "semester": "Fall 2026",
       "planOrder": 1,
-      "proposedDate": "2026-10-15",
       "flyer": "assets/workshop-1-2026.png",
       "flyerAlt": "BearAI Workshop 1: Design a Prompt-Based Study Assistant. Part 1 of a 3-part workshop series covering prompting, context, hallucinations, evaluating AI responses, and testing explanations, summaries, and quiz questions.",
-      "detailsPending": true
+      "timeZone": "America/Chicago"
     },
     {
       "id": "service-event-2026",
