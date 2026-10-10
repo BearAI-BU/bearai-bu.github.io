@@ -18,7 +18,7 @@ function eventDate(e){
  const date=value=>new Intl.DateTimeFormat('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',timeZone:zone}).format(new Date(value));
  const time=value=>new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:new Date(value).getUTCMinutes()===0?undefined:'2-digit',timeZone:zone}).format(new Date(value));
  const end=e.end&&Number.isFinite(Date.parse(e.end))?e.end:null;
- if(e.id==='general-interest'||e.id==='workshop-1'){
+ if(e.id==='general-interest'||e.id==='workshop-1'||e.id==='service-event-2026'){
   const startTime=time(e.start),endTime=end?time(end):null;
   const sameDay=end&&date(e.start)===date(end);
   const sharedPeriod=sameDay&&startTime.match(/(AM|PM)$/)?.[0]===endTime.match(/(AM|PM)$/)?.[0];

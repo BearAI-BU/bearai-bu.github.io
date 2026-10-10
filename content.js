@@ -173,15 +173,17 @@ window.BEARAI = {
     },
     {
       "id": "service-event-2026",
-      "start": null,
-      "end": null,
-      "location": null,
-      "description": "Details will be shared when confirmed.",
-      "title": "Data Science / ACM-W / BearAI Service Event",
+      "start": "2026-10-14T18:00:00-05:00",
+      "end": "2026-10-14T20:00:00-05:00",
+      "location": "Baylor SUB Gameroom",
+      "description": "Join Baylor Data Science Club, ACM-W, and BearAI for Halloween Grams and Bowling on October 14 at the Baylor SUB Gameroom.",
+      "title": "Halloween Grams and Bowling",
       "semester": "Fall 2026",
       "planOrder": 0,
-      "proposedDate": "2026-10-14",
-      "status": "Tentative"
+      "status": "Confirmed",
+      "timeZone": "America/Chicago",
+      "flyer": "assets/halloween-grams-bowling-2026.png",
+      "flyerAlt": "Halloween Grams and Bowling. Baylor Data Science Club × ACM-W × BearAI. Baylor SUB Gameroom, 6–8 PM, October 14."
     },
     {
       "id": "resume-linkedin-2026",
