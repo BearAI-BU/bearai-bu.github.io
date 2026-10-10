@@ -55,23 +55,79 @@ function resources(){return intro('Resources','Start learning AI.','New to Pytho
 function connectionEntry(e){return `<article class="card connection-entry"><div class="organization-logo ${e.logoDark?'logo-dark':' '}">${e.logo?`<img src="${esc(e.logo)}" alt="${esc(e.affiliation)} logo">`:esc(e.affiliation)}</div><div><h3>${esc(e.name)}</h3>${e.bearRole?`<span class="badge">${esc(e.bearRole)}</span>`:""}<p>${esc(e.relationship)}</p>${e.website?safeLink(e.website,"Visit website ↗"):""}</div></article>`;}
 function connections(){const entries=C.connections.filter(e=>e.verified);const categories=[['Guest Speakers','Guest speaker','Confirmed guests, their affiliation, and what they shared with BearAI.'],['Collaborations','Collaboration','Verified relationships and the specific work or activity connecting them to BearAI.'],['Where They Are Now','Alumni destination','Former officers and advisors, and where their paths have taken them.']];return intro('Connections','People connected<br>with BearAI.','Guest speakers, collaborations, professional connections, and the paths of former officers and advisors.')+`<section class="section">${C.sections.connections?`<div class="connection-categories">${categories.map(([title,type,description])=>`<section class="connection-category"><h2>${title}</h2>${description?`<p>${description}</p>`:''}${type==='Alumni destination'?'<p class="missing connection-source">Details checked on LinkedIn by BearAI leadership. Last updated September 15, 2026. Dr. Rivas’s information was verified on <a href="https://www.rivas.ai/" target="_blank" rel="noopener noreferrer">his website</a>.</p>':''}<div class="connections-list">${entries.filter(e=>e.type===type||(type==='Alumni destination'&&e.type==='Former advisor destination')).map(connectionEntry).join('')||`<div class="card">${badge('Details to be verified')}<p>Entries will be added here as details are confirmed.</p></div>`}</div></section>`).join('')}</div><p class="missing">An individual’s employer or school does not imply sponsorship or partnership with BearAI.</p>`:''}</section>`;}
 function recognition(){return intro('Awards & recognition','Recognizing achievement.','Celebrating the achievements of our members and the BearAI community.')+`<section class="section achievement-list">${C.recognition.filter(r=>r.verified).map(r=>`<article class="card achievement"><img class="real-photo" src="${esc(r.photo)}" alt="BearAI Team #3 at the 2025 AI Venture Challenge award presentation"><div><span class="eyebrow">${esc(r.year)} · ${esc(r.recipient)}</span><h2>${esc(r.title)}</h2><p>${esc(r.description)}</p>${safeLink(r.url,'About the competition')}</div></article>`).join('')}</section>`;}
-function projects(){return intro('Projects','From “what if”<br>to what’s possible.','A home for BearAI’s project work. Confirmed projects and public GitHub links will be added here.')+`<section class="section">${C.sections.projects?`<div class="cards">${C.projects.length?C.projects.map(p=>`<article class="card"><div class="project-visual" aria-hidden="true">&lt;/&gt;</div><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p>${safeLink(p.github,'View on GitHub ↗')}</article>`).join(''):`<article class="card"><div class="project-visual" aria-hidden="true">&lt;/&gt;</div>${badge('Showcase placeholder')}<h3>Project to be announced</h3><p>Project description, contributors, technologies, and status to be added after confirmation.</p>${pending('GitHub link')}</article>`}</div>`:''}<div class="quiet"><p>New to building with AI? You’re welcome here, even if you’ve never written a line of code.</p>${link('join','Start with the community ↗')}</div></section>`;}
+function projects(){return intro('Projects','From “what if”<br>to what’s possible.','Explore BearAI’s hands-on projects and workshop materials.')+`<section class="section">${C.sections.projects?`<div class="cards project-list">${C.projects.map(p=>`<article class="card">${p.status?badge(esc(p.status)):''}<h2>${esc(p.title)}</h2><p>${esc(p.description)}</p>${p.topics?`<p class="project-topics"><strong>Topics:</strong> ${p.topics.map(esc).join(' · ')}</p>`:''}${p.id==='ai-study-assistant'?link('projects/'+p.id,'View Project →','button'):safeLink(p.github,'View on GitHub ↗')}</article>`).join('')}</div>`:''}<div class="quiet"><p>New to building with AI? You’re welcome here, even if you’ve never written a line of code.</p>${link('join','Start with the community ↗')}</div></section>`;}
+function studyAssistant(){
+ const project=C.projects.find(p=>p.id==='ai-study-assistant');
+ const base='projects/ai-study-assistant';
+ return intro('Project',esc(project.title),'Build a personalized AI study assistant across three hands-on BearAI workshops.')+`
+ <div class="section study-project">
+  <div class="study-introduction">
+   ${link('projects','← All projects','text-link event-return')}
+   <p>Start by designing how your assistant should behave, turn those instructions into a Python application, and then introduce retrieval so it can work with larger collections of notes and documents.</p>
+   <p>Each participant builds and modifies their own assistant.</p>
+   <div class="actions">${link(base+'?section=workshop-1-materials','Workshop 1 Materials','button')}${link('events','View Upcoming Events')}</div>
+  </div>
+  <section class="study-section" aria-labelledby="study-progression">
+   <h2 id="study-progression">The Three-Part Progression</h2>
+   <p class="study-flow">Design → Code → Improve</p>
+   <div class="cards">
+    <article class="card"><span class="number">01 / DESIGN</span><h3>Prompting and Evaluation</h3><p>Define how your assistant explains concepts, creates quizzes and flashcards, uses course notes, and responds when information is missing. No programming is required for this first workshop.</p></article>
+    <article class="card"><span class="number">02 / CODE</span><h3>Python and an AI API</h3><p>Turn the behaviors explored in Workshop 1 into a small Python application that communicates with an AI model.</p></article>
+    <article class="card"><span class="number">03 / IMPROVE</span><h3>Retrieval and RAG</h3><p>Introduce retrieval-augmented generation: finding relevant information in a collection of documents and supplying it to the model before it responds.</p></article>
+   </div>
+  </section>
+  <section class="study-section" aria-labelledby="study-workshop-1">
+   <span class="eyebrow">Workshop 1</span><h2 id="study-workshop-1">Design a Prompt-Based Study Assistant</h2>
+   <p>Participants will use a standard AI chatbot to design and test a study assistant. They will define its goals, provide relevant context, establish rules, evaluate its responses, and revise their instructions.</p>
+   <p>By the end, participants should be able to:</p>
+   <ul class="study-list"><li>Explain what a prompt is.</li><li>Identify useful goals, context, rules, and output requirements.</li><li>Recognize unsupported information and instruction-following failures.</li><li>Evaluate responses for accuracy and usefulness.</li><li>Improve a prompt through repeated testing.</li></ul>
+  </section>
+  <section class="study-section study-materials" aria-labelledby="workshop-1-materials">
+   <h2 id="workshop-1-materials" tabindex="-1">Workshop 1 Materials</h2>
+   ${project.materials.map(m=>`<article class="card material-card"><div><h3>${esc(m.title)}</h3><p>${esc(m.description)}</p></div><a class="button" href="${esc(m.file)}" target="_blank" rel="noopener">${esc(m.label)} <span class="material-format">PDF ↗</span></a></article>`).join('')}
+   <details class="study-explanation"><summary>Why Are the Notes Fictional?</summary><p>The Virelia Star System was created specifically for this workshop. Its details must come from the supplied notes, making it easier to test whether an assistant uses those notes correctly or introduces unsupported information.</p></details>
+  </section>
+  <div class="study-section study-practice">
+   <section aria-labelledby="study-activities"><h2 id="study-activities">What Participants Will Do</h2>
+    <ol class="study-list"><li><strong>Design:</strong> Decide how the assistant should behave.</li><li><strong>Test:</strong> Try the shared workshop questions.</li><li><strong>Challenge:</strong> Ask questions the notes cannot answer.</li><li><strong>Evaluate:</strong> Check accuracy, use of the notes, instruction-following, and usefulness.</li><li><strong>Improve:</strong> Revise the prompt and test again.</li></ol>
+    <p class="study-flow">Version 1 → Test → Evaluate → Version 2</p>
+   </section>
+   <section aria-labelledby="study-framework"><h2 id="study-framework">A Simple Prompting Framework</h2>
+    <table class="study-framework"><thead><tr><th scope="col">Element</th><th scope="col">Question</th></tr></thead><tbody>${[['Goal','What do you want the AI to do?'],['Context','What information does it need?'],['Rules','What should it do or avoid doing?'],['Output','What should the response look like?']].map(([element,question])=>`<tr><th scope="row">${element}</th><td>${question}</td></tr>`).join('')}</tbody></table>
+    <p>Prompting is iterative: <strong>Define → Test → Evaluate → Improve.</strong></p>
+   </section>
+  </div>
+  <section class="study-section study-takeaway" aria-labelledby="study-takeaway"><h2 id="study-takeaway">Workshop 1 Takeaway</h2><p>Participants should leave with reusable instructions describing how their assistant uses notes, explains material, quizzes them, provides feedback, and handles missing information.</p><p><strong>Save your prompt—you’ll build on these ideas in Workshop 2.</strong></p></section>
+  <section class="study-section" aria-labelledby="study-next"><h2 id="study-next">Workshops 2 and 3</h2><div class="study-next cards">
+   <article class="card"><h3>Workshop 2 — Code the Study Assistant</h3><p>Coming soon. Move from interacting directly with a chatbot to building a small Python application that communicates with an AI model.</p></article>
+   <article class="card"><h3>Workshop 3 — Add Retrieval</h3><p>Coming soon. Extend the application to retrieve relevant information from larger collections of notes before generating a response.</p></article>
+  </div></section>
+  <div class="quiet"><div class="actions">${link('events','View Upcoming Events')}${safeLink(C.join.groupme,'Join GroupMe ↗')}</div><p class="study-signoff">Learn AI · Build with AI · Connect through AI</p></div>
+ </div>`;
+}
+
 function community(){const highlights=(C.communityHighlights||[]).map(h=>({event:C.events.find(e=>e.id===h.eventId&&!e.hidden),index:h.photoIndex||0})).filter(h=>h.event?.photos?.[h.index]);return intro('Community','Life at BearAI.','Meet the students, see what we’ve been doing, and explore highlights from club activities.')+`<section class="section">${C.sections.gallery?`<div class="split">${photo()}<div><span class="eyebrow">Community highlights</span><h2>Learning together,<br>beyond the screen.</h2><p>A selection of moments from BearAI activities. Each event keeps its full photo gallery, captions, and recap on the Events page.</p>${highlights.length?'':badge('Picnic Palooza photo and event details to be added')}</div></div><div class="cards section-sub">${highlights.slice(1).map(({event,index})=>{const p=event.photos[index];return `<article class="card"><img class="real-photo" src="${esc(p.src)}" alt="${esc(p.alt)}"><h3>${esc(event.title)}</h3><p>${esc(p.caption)}</p>${event.photoCredit?`<p class="missing">${esc(event.photoCredit)}</p>`:''}${link('events/'+encodeURIComponent(event.id),'View event recap & gallery ↗')}</article>`;}).join('')}</div>`:''}</section>`;}
 function eventDetail(id){const event=C.events.find(e=>e.id===id&&!e.hidden&&!e.cancelled);if(!event)return intro('Event unavailable','Event not found.','Use Events to explore the available gatherings.');const past=BearEvents.classify([event]).past.length>0;if(event.id==='picnic-palooza-2026')return intro('Past event',esc(event.title),'A moment from BearAI’s community.')+`<section class="section">${link('events','← All events','text-link event-return')}${pastEventCard(event,true)}</section>`;return intro(past?'Past event':'Event details',esc(event.title),eventDescription(event))+`<section class="section">${link('events','← All events','text-link event-return')}<div class="section-sub">${eventCard(event,false,true,past)}</div></section>`;}
 function safeLink(url,label){return /^https:\/\//.test(url||'')?`<a class="text-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`:pending(label);}
 function join(){return intro('Join BearAI','Bring your curiosity.<br>You belong here.','All majors. Every experience level. You don’t need a technical background to start exploring AI with us.')+`<section class="section"><div class="cards join-grid">${[['00','Baylor Connect','Please request to join BearAI on Baylor Connect. We’ll accept your request as soon as possible. Joining helps us maintain BearAI’s official membership roster through Baylor.','connect','Open Baylor Connect'],['01','GroupMe','Our main channel for club-wide communication and announcements.','groupme','Join the GroupMe'],['02','Instagram','Follow along with BearAI’s public updates.','instagram','Visit Instagram'],['03','Interest survey','Share what interests you and what you’d like to learn. Your feedback helps shape BearAI. Please take a moment to complete the survey—it’s especially important because your responses help us plan workshops, projects, and events around what you want to learn.','survey','Open interest survey'],['04','Contact us','Have a question? Get in touch with BearAI.','email','Email BearAI']].map(([n,title,desc,key,label])=>`<article class="card ${key==='connect'?'connect-card':''}"><span class="number">${n} / GET CONNECTED</span><h3>${title}</h3><p>${desc}</p>${key==='email'&&C.join.email?`<a class="text-link" href="mailto:${esc(C.join.email)}">${esc(C.join.email)}</a>`:safeLink(C.join[key],label)}</article>`).join('')}</div></section>`;}
-const pages={'':home,about,people,events,resources,connections,recognition,projects,community,join};
+const pages={'projects/ai-study-assistant':studyAssistant,'':home,about,people,events,resources,connections,recognition,projects,community,join};
 function render(focus=false){
   const route=location.hash.replace(/^#\/?/,'').split('?')[0];
-  document.querySelector('#nav').innerHTML=routes.map(([path,label])=>`<a href="#/${path}" ${(route===path||(path==='events'&&route.startsWith('events/')))?'aria-current="page"':''} class="${path==='join'?'join-nav':''}">${label}</a>`).join('');
+  document.querySelector('#nav').innerHTML=routes.map(([path,label])=>`<a href="#/${path}" ${(route===path||(['events','projects'].includes(path)&&route.startsWith(path+'/')))?'aria-current="page"':''} class="${path==='join'?'join-nav':''}">${label}</a>`).join('');
   document.querySelector('#main').innerHTML=route.startsWith('events/')?eventDetail(decodeURIComponent(route.slice(7))):pages[route]?pages[route]():intro('Page not found','Let’s reconnect.','This page doesn’t exist. Use the navigation to return to BearAI.');
-  document.title=`${routes.find(r=>r[0]===route)?.[1]||(route.startsWith('events/')?'Event gallery':'Page not found')} — BearAI`;
+  document.title=`${routes.find(r=>r[0]===route)?.[1]||(route==='projects/ai-study-assistant'?'AI Study Assistant':route.startsWith('events/')?'Event gallery':'Page not found')} — BearAI`;
   document.querySelector('#nav').classList.remove('open');document.querySelector('.menu').setAttribute('aria-expanded','false');
   setupNetwork();
   BearVisual.scrambleHeadings();
   mountExplore();
   mountEntrances();
   if(focus){document.querySelector('#main').focus();window.scrollTo(0,0);}
+  // Hash-router query keeps the materials URL stable on GitHub Pages and refresh.
+  const section=new URLSearchParams(location.hash.split('?')[1]||'').get('section');
+  if(route==='projects/ai-study-assistant'&&section==='workshop-1-materials')requestAnimationFrame(()=>{
+    const target=document.getElementById('workshop-1-materials');
+    if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
+  });
 }
 document.querySelector('.menu').addEventListener('click',()=>{const open=document.querySelector('#nav').classList.toggle('open');document.querySelector('.menu').setAttribute('aria-expanded',String(open));});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.querySelector('#nav').classList.contains('open')){document.querySelector('#nav').classList.remove('open');document.querySelector('.menu').setAttribute('aria-expanded','false');document.querySelector('.menu').focus();}});

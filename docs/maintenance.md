@@ -132,3 +132,15 @@ Edit the same records in `content.js` → `events`; do not create a second copy 
 Only after approval, change `status` to `Confirmed` and enter the confirmed `start` and `end` with their correct time-zone offsets. Confirmed future events appear in Upcoming Events and take priority on the homepage; their semester row stays visible and says Confirmed. Without a confirmed upcoming event, the homepage keeps a tentative planned activity. A proposed date alone is not confirmation.
 
 Keep `detailsPending: true` for a placeholder such as Workshop 1 until meaningful details are ready; this hides its gallery link. Add the original flyer under `flyer`. With photos, previews show that flyer first and one photo selected by `previewPhotoIndex` (or `mainPhotoIndex`, then photo 0); full collections stay on the detail page. Run `npm test` and `npm run build` before publishing.
+
+## AI Study Assistant project and workshop materials
+
+The Projects card is in `content.js` → `projects` with the stable id `ai-study-assistant`. Its permanent page is `https://bearai-bu.github.io/#/projects/ai-study-assistant`; page sections are in `studyAssistant()` in `app.js`.
+
+Use this permanent **Workshop 1 Materials** URL for QR codes:
+
+`https://bearai-bu.github.io/#/projects/ai-study-assistant?section=workshop-1-materials`
+
+Keep that route and section id unchanged when adding materials. The router scrolls and focuses the materials heading on direct visits and refreshes. Add only ready, public files to `assets/` and the project's `materials` array (`title`, `description`, `file`, `label`). Do not add placeholder download buttons. Workshop 1 sample notes are `assets/workshop-1-sample-notes.pdf`. Slides, an activity guide, and an example prompt can be added when available. Add optional testing examples only after Workshop 1 and check missing-information questions against the final notes first.
+
+Keep Workshop 2 and 3 implementation details high-level until finalized. Event dates, locations, and gallery content remain in the shared event records, not on the permanent project page. Run `npm test` and `npm run build`, and check the materials direct link and PDF before publishing.

@@ -246,7 +246,29 @@ window.BEARAI = {
       "status": "Tentative"
     }
   ],
-  "projects": [],
+  "projects": [
+    {
+      "id": "ai-study-assistant",
+      "title": "AI Study Assistant",
+      "description": "Build a personalized AI study assistant across three BearAI workshops—from prompt design to a Python application, then retrieval-augmented generation.",
+      "status": "In Progress",
+      "topics": [
+        "LLMs",
+        "Prompting",
+        "Python",
+        "APIs",
+        "RAG"
+      ],
+      "materials": [
+        {
+          "title": "Sample Notes — The Virelia Star System",
+          "description": "Use these fictional course notes during the activities. Working from the same material lets participants compare how different prompts affect a model’s responses.",
+          "file": "assets/workshop-1-sample-notes.pdf",
+          "label": "Open Sample Notes"
+        }
+      ]
+    }
+  ],
   "pastOfficers": [
     {
       "name": "Omar Darwish",
