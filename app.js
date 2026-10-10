@@ -110,6 +110,15 @@ function community(){const highlights=(C.communityHighlights||[]).map(h=>({event
 function eventDetail(id){const event=C.events.find(e=>e.id===id&&!e.hidden&&!e.cancelled);if(!event)return intro('Event unavailable','Event not found.','Use Events to explore the available gatherings.');const past=BearEvents.classify([event]).past.length>0;if(event.id==='picnic-palooza-2026')return intro('Past event',esc(event.title),'A moment from BearAI’s community.')+`<section class="section">${link('events','← All events','text-link event-return')}${pastEventCard(event,true)}</section>`;return intro(past?'Past event':'Event details',esc(event.title),eventDescription(event))+`<section class="section">${link('events','← All events','text-link event-return')}<div class="section-sub">${eventCard(event,false,true,past)}</div></section>`;}
 function safeLink(url,label){return /^https:\/\//.test(url||'')?`<a class="text-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`:pending(label);}
 function join(){return intro('Join BearAI','Bring your curiosity.<br>You belong here.','All majors. Every experience level. You don’t need a technical background to start exploring AI with us.')+`<section class="section"><div class="cards join-grid">${[['00','Baylor Connect','Please request to join BearAI on Baylor Connect. We’ll accept your request as soon as possible. Joining helps us maintain BearAI’s official membership roster through Baylor.','connect','Open Baylor Connect'],['01','GroupMe','Our main channel for club-wide communication and announcements.','groupme','Join the GroupMe'],['02','Instagram','Follow along with BearAI’s public updates.','instagram','Visit Instagram'],['03','Interest survey','Share what interests you and what you’d like to learn. Your feedback helps shape BearAI. Please take a moment to complete the survey—it’s especially important because your responses help us plan workshops, projects, and events around what you want to learn.','survey','Open interest survey'],['04','Contact us','Have a question? Get in touch with BearAI.','email','Email BearAI']].map(([n,title,desc,key,label])=>`<article class="card ${key==='connect'?'connect-card':''}"><span class="number">${n} / GET CONNECTED</span><h3>${title}</h3><p>${desc}</p>${key==='email'&&C.join.email?`<a class="text-link" href="mailto:${esc(C.join.email)}">${esc(C.join.email)}</a>`:safeLink(C.join[key],label)}</article>`).join('')}</div></section>`;}
+// Reapply after fonts and browser restoration settle so QR links survive refresh.
+function focusWorkshopMaterials(){
+ const [route,query]=location.hash.replace(/^#\/?/,'').split('?');
+ if(route!=='projects/ai-study-assistant'||new URLSearchParams(query||'').get('section')!=='workshop-1-materials')return;
+ requestAnimationFrame(()=>{
+  const target=document.getElementById('workshop-1-materials');
+  if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
+ });
+}
 const pages={'projects/ai-study-assistant':studyAssistant,'':home,about,people,events,resources,connections,recognition,projects,community,join};
 function render(focus=false){
   const route=location.hash.replace(/^#\/?/,'').split('?')[0];
@@ -122,16 +131,13 @@ function render(focus=false){
   mountExplore();
   mountEntrances();
   if(focus){document.querySelector('#main').focus();window.scrollTo(0,0);}
-  // Hash-router query keeps the materials URL stable on GitHub Pages and refresh.
-  const section=new URLSearchParams(location.hash.split('?')[1]||'').get('section');
-  if(route==='projects/ai-study-assistant'&&section==='workshop-1-materials')requestAnimationFrame(()=>{
-    const target=document.getElementById('workshop-1-materials');
-    if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
-  });
+  focusWorkshopMaterials();
 }
 document.querySelector('.menu').addEventListener('click',()=>{const open=document.querySelector('#nav').classList.toggle('open');document.querySelector('.menu').setAttribute('aria-expanded',String(open));});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.querySelector('#nav').classList.contains('open')){document.querySelector('#nav').classList.remove('open');document.querySelector('.menu').setAttribute('aria-expanded','false');document.querySelector('.menu').focus();}});
 window.addEventListener('hashchange',()=>render(true));render();
+window.addEventListener('pageshow',focusWorkshopMaterials);
+if(document.fonts)document.fonts.ready.then(focusWorkshopMaterials);
 document.querySelector('footer').innerHTML=`<a class="brand footer-brand" href="#/" aria-label="BearAI home"><img src="assets/BearAI_Logo_Green.png" alt=""><span class="footer-wordmark">Bear<span class="gold">AI</span></span></a><small class="copyright">© ${new Date().getFullYear()} BearAI — Baylor University’s AI student organization. All rights reserved.</small><div class="footer-links">${link('about','About','')}${link('events','Events','')}${link('resources','Resources','')}${link('connections','Connections','')}${link('recognition','Recognition','')}${link('join','Contact & club channels','')}<a href="https://www.baylor.edu/" target="_blank" rel="noopener noreferrer">Baylor University ↗</a></div>`;
 // The skip link focuses content without changing the page route.
 document.querySelector('.skip').addEventListener('click',event=>{event.preventDefault();document.querySelector('#main').focus();document.querySelector('#main').scrollIntoView();});
