@@ -7,7 +7,9 @@ const listing=vm.runInContext('projects()',ctx),page=vm.runInContext('studyAssis
 assert(listing.includes('View Project →'));assert(listing.includes('In Progress'));assert(listing.includes('LLMs · Prompting · Python · APIs · RAG'));assert(!listing.includes('Project to be announced'));
 for(const text of ['Workshop 1 Materials','Design a Prompt-Based Study Assistant','What Participants Will Do','A Simple Prompting Framework','Save your prompt—you’ll build on these ideas in Workshop 2.','Workshop 2 — Code the Study Assistant','Workshop 3 — Add Retrieval','Learn AI · Build with AI · Connect through AI'])assert(page.includes(text),text);
 assert.equal((page.match(/id="workshop-1-materials"/g)||[]).length,1);
-assert(page.includes('href="#/projects/ai-study-assistant?section=workshop-1-materials"'));
+assert(!page.split('The Three-Part Progression')[0].includes('class="actions"'));
+assert(page.includes('prompt engineering workshop'));
+assert(page.includes('acknowledge when information is missing'));
 assert(page.includes(ctx.window.BEARAI.join.groupme));assert(page.includes('href="#/events"'));
 assert.equal(project.materials.length,1);assert(page.includes('href="assets/workshop-1-sample-notes.pdf"'));
 assert.equal(fs.readFileSync(path.join(root,project.materials[0].file)).subarray(0,5).toString(),'%PDF-');

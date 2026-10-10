@@ -326,6 +326,32 @@ window.BEARAI = {
   ],
   "connections": [
     {
+      "name": "Baylor Data Science Club",
+      "affiliation": "Baylor Data Science Club",
+      "relationship": "Collaborating with BearAI on shared service and data-focused activities.",
+      "type": "Collaboration",
+      "verified": true,
+      "logo": "assets/data-science-club.jpg",
+      "website": "https://baylor.campuslabs.com/engage/organization/data_science_club",
+      "eventIds": [
+        "service-event-2026",
+        "spooky-stories-2026"
+      ]
+    },
+    {
+      "name": "ACM-W",
+      "affiliation": "ACM-W",
+      "relationship": "Collaborating with BearAI on shared service and data-focused activities.",
+      "type": "Collaboration",
+      "verified": true,
+      "logo": "assets/acmw.jpg",
+      "website": "https://baylor.campuslabs.com/engage/organization/women-in-computer-science",
+      "eventIds": [
+        "service-event-2026",
+        "spooky-stories-2026"
+      ]
+    },
+    {
       "name": "Omar Darwish",
       "affiliation": "IBM",
       "relationship": "Working as a Data Engineer.",
