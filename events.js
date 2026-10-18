@@ -4,11 +4,11 @@
  function classify(records,now=Date.now()){
  const valid=records.filter(e=>!e.hidden&&!e.cancelled);
  const tentative=e=>e.status==='Tentative'||e.status==='Details pending';
- const dated=valid.filter(e=>!tentative(e)&&Number.isFinite(timestamp(e.start))).sort((a,b)=>timestamp(a.start)-timestamp(b.start));
+ const dated=valid.filter(e=>!e.completed&&!tentative(e)&&Number.isFinite(timestamp(e.start))).sort((a,b)=>timestamp(a.start)-timestamp(b.start));
  // Explicit offsets identify an instant regardless of the visitor's time zone.
  // A missing/invalid end falls back to the start; confirmed events should have both.
  const ends=e=>Number.isFinite(timestamp(e.end))&&timestamp(e.end)>=timestamp(e.start)?timestamp(e.end):timestamp(e.start);
- return {upcoming:dated.filter(e=>e.status==='Confirmed'&&timestamp(e.start)>now),ongoing:dated.filter(e=>timestamp(e.start)<=now&&ends(e)>now),past:dated.filter(e=>ends(e)<=now).reverse(),undated:valid.filter(e=>!Number.isFinite(timestamp(e.start))),planned:valid.filter(e=>tentative(e)||(!e.status&&(!Number.isFinite(timestamp(e.start))||timestamp(e.start)>now)))};
+ return {upcoming:dated.filter(e=>e.status==='Confirmed'&&timestamp(e.start)>now),ongoing:dated.filter(e=>timestamp(e.start)<=now&&ends(e)>now),past:[...valid.filter(e=>e.completed),...dated.filter(e=>ends(e)<=now)].sort((a,b)=>timestamp(b.start)-timestamp(a.start)),undated:valid.filter(e=>!Number.isFinite(timestamp(e.start))),planned:valid.filter(e=>!e.completed&&(tentative(e)||(!e.status&&(!Number.isFinite(timestamp(e.start))||timestamp(e.start)>now))))};
  }
  const api={classify,next:(records,now)=>classify(records,now).upcoming[0]||null};
  if(typeof module!=='undefined')module.exports=api;else root.BearEvents=api;

@@ -11,7 +11,7 @@ assert(!page.split('The Three-Part Progression')[0].includes('class="actions"'))
 assert(page.includes('prompt engineering workshop'));
 assert(page.includes('acknowledge when information is missing'));
 assert(page.includes(ctx.window.BEARAI.join.groupme));assert(page.includes('href="#/events"'));
-assert.equal(project.materials.length,1);assert(page.includes('href="assets/workshop-1-sample-notes.pdf"'));
+assert.equal(project.materials.length,1);assert(page.includes('View Workshop 1 Slides'));assert(page.includes('Workshop 1 · Completed'));assert(page.includes('href="assets/workshop-1-sample-notes.pdf"'));
 assert.equal(fs.readFileSync(path.join(root,project.materials[0].file)).subarray(0,5).toString(),'%PDF-');
 for(const forbidden of ['Activity Guide','Workshop Slides','Example Study Assistant Prompt','How many moons does Asteron have?','October 15','Cashion','disabled'])assert(!page.includes(forbidden),forbidden);
 // Exercise the real renderer on an initial direct visit and a hash navigation.

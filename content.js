@@ -104,7 +104,9 @@ window.BEARAI = {
       "mainPhotoIndex": 0,
       "flyer": "assets/gim-september-2026.png",
       "flyerAlt": "Promotional artwork for the BearAI General Interest Meeting showing BearAI branding in a classroom.",
-      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair",
+      "completed": true,
+      "semester": "Fall 2026"
     },
     {
       "id": "picnic-palooza-2026",
@@ -169,7 +171,50 @@ window.BEARAI = {
       "planOrder": 1,
       "flyer": "assets/workshop-1-2026.png",
       "flyerAlt": "BearAI Workshop 1: Design a Prompt-Based Study Assistant. Part 1 of a 3-part workshop series covering prompting, context, hallucinations, evaluating AI responses, and testing explanations, summaries, and quiz questions.",
-      "timeZone": "America/Chicago"
+      "timeZone": "America/Chicago",
+      "completed": true,
+      "photos": [
+        {
+          "src": "assets/workshop-1-llm.jpg",
+          "alt": "Alessandro explaining what a large language model is during BearAI Workshop #1.",
+          "caption": "Alessandro explaining what a large language model is during BearAI Workshop #1."
+        },
+        {
+          "src": "assets/workshop-1-evaluation.jpg",
+          "alt": "Chelsey presenting why AI responses should be evaluated before they are trusted.",
+          "caption": "Chelsey presenting why AI responses should be evaluated before they are trusted."
+        },
+        {
+          "src": "assets/workshop-1-group.jpg",
+          "alt": "A group working together to improve a prompt during BearAI Workshop #1.",
+          "caption": "A group working together to improve a prompt during BearAI Workshop #1."
+        },
+        {
+          "src": "assets/workshop-1-shared-notes.jpg",
+          "alt": "Noelle and Alessandro explaining why participants are using shared notes for the workshop.",
+          "caption": "Noelle and Alessandro explaining why participants are using shared notes for the workshop."
+        },
+        {
+          "src": "assets/workshop-1-testing.jpg",
+          "alt": "Participants testing prompts and reviewing AI responses during BearAI Workshop #1.",
+          "caption": "Participants testing prompts and reviewing AI responses during BearAI Workshop #1."
+        },
+        {
+          "src": "assets/workshop-1-questions.jpg",
+          "alt": "Alessandro and Chelsey helping participants and answering questions during BearAI Workshop #1.",
+          "caption": "Alessandro and Chelsey helping participants and answering questions during BearAI Workshop #1."
+        }
+      ],
+      "mainPhotoIndex": 0,
+      "previewPhotoIndex": 0,
+      "materials": [
+        {
+          "title": "Workshop 1 Slides",
+          "description": "Review the Workshop 1 presentation on prompt design, testing, and evaluating AI responses.",
+          "file": "assets/workshop-1-slides.pdf",
+          "label": "View Workshop 1 Slides"
+        }
+      ]
     },
     {
       "id": "service-event-2026",
@@ -183,7 +228,27 @@ window.BEARAI = {
       "status": "Confirmed",
       "timeZone": "America/Chicago",
       "flyer": "assets/halloween-grams-bowling-2026.png",
-      "flyerAlt": "Halloween Grams and Bowling. Baylor Data Science Club × ACM-W × BearAI. Baylor SUB Gameroom, 6–8 PM, October 14."
+      "flyerAlt": "Halloween Grams and Bowling. Baylor Data Science Club × ACM-W × BearAI. Baylor SUB Gameroom, 6–8 PM, October 14.",
+      "completed": true,
+      "photos": [
+        {
+          "src": "assets/service-table.jpg",
+          "alt": "Halloween decorations and craft supplies on the table at Halloween Grams and Bowling.",
+          "caption": "Halloween decorations and craft supplies on the table at Halloween Grams and Bowling."
+        },
+        {
+          "src": "assets/service-grams.jpg",
+          "alt": "Halloween grams wrapped in pumpkin-patterned bags at the service event.",
+          "caption": "Halloween grams wrapped in pumpkin-patterned bags at the service event."
+        },
+        {
+          "src": "assets/service-gathering.jpg",
+          "alt": "Participants hanging out and eating at Halloween Grams and Bowling.",
+          "caption": "Participants hanging out and eating at Halloween Grams and Bowling."
+        }
+      ],
+      "mainPhotoIndex": 0,
+      "previewPhotoIndex": 0
     },
     {
       "id": "resume-linkedin-2026",
@@ -222,16 +287,15 @@ window.BEARAI = {
       "status": "Tentative"
     },
     {
-      "id": "lockheed-ai-speaker",
+      "id": "faculty-research-session",
+      "title": "AI Research / Faculty Info Session",
       "start": null,
       "end": null,
-      "location": null,
-      "description": "Details will be shared when confirmed.",
-      "title": "Potential Lockheed Martin AI Speaker",
-      "semester": "Fall 2026",
-      "planOrder": 5,
       "proposedDate": null,
-      "status": "Tentative"
+      "status": "Tentative",
+      "detailsPending": true,
+      "description": "Details pending.",
+      "semester": "Fall 2026"
     },
     {
       "id": "workshop-3",
@@ -266,7 +330,8 @@ window.BEARAI = {
           "file": "assets/workshop-1-sample-notes.pdf",
           "label": "Open Sample Notes"
         }
-      ]
+      ],
+      "workshopEventId": "workshop-1"
     }
   ],
   "pastOfficers": [
@@ -307,6 +372,18 @@ window.BEARAI = {
     }
   ],
   "communityHighlights": [
+    {
+      "eventId": "workshop-1",
+      "photoIndex": 0
+    },
+    {
+      "eventId": "service-event-2026",
+      "photoIndex": 0
+    },
+    {
+      "eventId": "workshop-1",
+      "photoIndex": 2
+    },
     {
       "eventId": "general-interest",
       "photoIndex": 0
