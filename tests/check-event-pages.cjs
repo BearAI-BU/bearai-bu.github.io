@@ -16,7 +16,7 @@ const detail=vm.runInContext("eventDetail('general-interest')",context);
 assert(detail.includes('7:30–8:30 PM'));assert(!detail.includes('America/Chicago'));
 assert(detail.includes('View original promotional flyer'));assert(detail.includes('Cashion C311'));
 const community=vm.runInContext('community()',context);
-assert(community.includes('gim-aubrey-alessandro.png'));assert(community.includes('gim-alessandro-questions.png'));
+assert(community.includes('gim-aubrey-alessandro.png'));assert(!community.includes('gim-alessandro-questions.png'));assert(detail.includes('gim-alessandro-questions.png'));
 assert(!community.includes('gim-lucas-survey.png'));assert(community.includes('#/events/general-interest'));
 const planned=context.window.BEARAI.events.find(e=>e.id==='workshop-1');
 assert(api.classify([planned],now).past.includes(planned));assert.equal(api.classify([planned],now).upcoming.length,0);
@@ -70,7 +70,7 @@ for(const html of [vm.runInContext('eventCard(C.events.find(e=>e.id==="workshop-
 assert.equal(planned.timeZone,'America/Chicago');
 assert.equal(api.next(context.window.BEARAI.events,now),null);
 assert(events.lastIndexOf(planned.title)>events.indexOf('Past Events'));
-assert(workshopDetail.includes('Event photos'));assert(workshopDetail.includes('View Workshop 1 Slides'));
+assert(workshopDetail.includes('Event photos'));assert(!workshopDetail.includes('View Workshop 1 Slides'));
 console.log('Completed workshop details, preserved logistics, shared flyer and slides passed.');
 
 const service=context.window.BEARAI.events.find(e=>e.id==='service-event-2026');

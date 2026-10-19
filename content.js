@@ -214,7 +214,8 @@ window.BEARAI = {
           "file": "assets/workshop-1-slides.pdf",
           "label": "View Workshop 1 Slides"
         }
-      ]
+      ],
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
     },
     {
       "id": "service-event-2026",
@@ -248,7 +249,8 @@ window.BEARAI = {
         }
       ],
       "mainPhotoIndex": 0,
-      "previewPhotoIndex": 0
+      "previewPhotoIndex": 0,
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
     },
     {
       "id": "resume-linkedin-2026",
@@ -387,10 +389,6 @@ window.BEARAI = {
     {
       "eventId": "general-interest",
       "photoIndex": 0
-    },
-    {
-      "eventId": "general-interest",
-      "photoIndex": 1
     },
     {
       "eventId": "picnic-palooza-2026",
