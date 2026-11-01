@@ -65,6 +65,7 @@ function connectionEntry(e){return `<article class="card connection-entry ${e.ty
 function connections(){const entries=C.connections.filter(e=>e.verified);const categories=[['Guest Speakers','Guest speaker','Confirmed guests, their affiliation, and what they shared with BearAI.'],['Collaborations','Collaboration','Verified relationships and the specific work or activity connecting them to BearAI.'],['Where They Are Now','Alumni destination','Former officers and advisors, and where their paths have taken them.']];return intro('Connections','People connected<br>with BearAI.','Guest speakers, collaborations, professional connections, and the paths of former officers and advisors.')+`<section class="section">${C.sections.connections?`<div class="connection-categories">${categories.map(([title,type,description])=>`<section class="connection-category"><h2>${title}</h2>${description?`<p>${description}</p>`:''}${type==='Alumni destination'?'<p class="missing connection-source">Details checked on LinkedIn by BearAI leadership. Last updated September 15, 2026. Dr. Rivas’s information was verified on <a href="https://www.rivas.ai/" target="_blank" rel="noopener noreferrer">his website</a>.</p>':''}<div class="connections-list">${entries.filter(e=>e.type===type||(type==='Alumni destination'&&e.type==='Former advisor destination')).map(connectionEntry).join('')||`<div class="card">${badge('Details to be verified')}<p>Entries will be added here as details are confirmed.</p></div>`}</div></section>`).join('')}</div><p class="missing">An individual’s employer or school does not imply sponsorship or partnership with BearAI.</p>`:''}</section>`;}
 function recognition(){return intro('Awards & recognition','Recognizing achievement.','Celebrating the achievements of our members and the BearAI community.')+`<section class="section achievement-list">${C.recognition.filter(r=>r.verified).map(r=>`<article class="card achievement"><img class="real-photo" src="${esc(r.photo)}" alt="BearAI Team #3 at the 2025 AI Venture Challenge award presentation"><div><span class="eyebrow">${esc(r.year)} · ${esc(r.recipient)}</span><h2>${esc(r.title)}</h2><p>${esc(r.description)}</p>${safeLink(r.url,'About the competition')}</div></article>`).join('')}</section>`;}
 function projects(){return intro('Projects','From “what if”<br>to what’s possible.','Explore BearAI’s hands-on projects and workshop materials.')+`<section class="section">${C.sections.projects?`<div class="cards project-list">${C.projects.map(p=>`<article class="card">${p.status?badge(esc(p.status)):''}<h2>${esc(p.title)}</h2><p>${esc(p.description)}</p>${p.topics?`<p class="project-topics"><strong>Topics:</strong> ${p.topics.map(esc).join(' · ')}</p>`:''}${p.id==='ai-study-assistant'?link('projects/'+p.id,'View Project →','button'):safeLink(p.github,'View on GitHub ↗')}</article>`).join('')}</div>`:''}<div class="quiet"><p>New to building with AI? You’re welcome here, even if you’ve never written a line of code.</p>${link('join','Start with the community ↗')}</div></section>`;}
+function studyResource(m){return `<article class="card material-card"><div><h3>${esc(m.title)}</h3><p>${esc(m.description)}</p></div><a class="button" href="${esc(m.url||m.file)}" target="_blank" rel="noopener noreferrer">${esc(m.label)} <span class="material-format">${esc(m.format||'PDF ↗')}</span></a></article>`;}
 function studyAssistant(){
  const project=C.projects.find(p=>p.id==='ai-study-assistant');
  const workshop=C.events.find(e=>e.id===project.workshopEventId);
@@ -93,7 +94,7 @@ function studyAssistant(){
   </section>
   <section class="study-section study-materials" aria-labelledby="workshop-1-materials">
    <h2 id="workshop-1-materials" tabindex="-1">Workshop 1 Materials</h2>
-   ${materials.map(m=>`<article class="card material-card"><div><h3>${esc(m.title)}</h3><p>${esc(m.description)}</p></div><a class="button" href="${esc(m.file)}" target="_blank" rel="noopener">${esc(m.label)} <span class="material-format">PDF ↗</span></a></article>`).join('')}
+   ${materials.map(studyResource).join('')}
    <details class="study-explanation"><summary>Why Are the Notes Fictional?</summary><p>The Virelia Star System is fictional and was created specifically for this workshop. Its invented facts are supplied in these notes, so the model should use this material rather than rely on general knowledge from its training. Your prompt should instruct the assistant to answer from the notes and acknowledge when information is missing. This lets us test whether it follows those instructions or generates unsupported information.</p></details>
   </section>
   <div class="study-section study-practice">
@@ -107,14 +108,99 @@ function studyAssistant(){
    </section>
   </div>
   <section class="study-section study-takeaway" aria-labelledby="study-takeaway"><h2 id="study-takeaway">Workshop 1 Takeaway</h2><p>Participants should leave with reusable instructions describing how their assistant uses notes, explains material, quizzes them, provides feedback, and handles missing information.</p><p><strong>Save your prompt—you’ll build on these ideas in Workshop 2.</strong></p></section>
-  <section class="study-section" aria-labelledby="study-next"><h2 id="study-next">Workshops 2 and 3</h2><div class="study-next cards">
-   <article class="card"><h3>Workshop 2 — Code the Study Assistant</h3><p>Coming soon. Move from interacting directly with a chatbot to building a small Python application that communicates with an AI model.</p></article>
-   <article class="card"><h3>Workshop 3 — Add Retrieval</h3><p>Coming soon. Extend the application to retrieve relevant information from larger collections of notes before generating a response.</p></article>
-  </div></section>
+  <section class="study-section" aria-labelledby="study-workshop-2">
+   <span class="eyebrow">02 / CODE</span><h2 id="study-workshop-2">Workshop 2 — Code the Study Assistant</h2>
+   <p>Workshop #2 turns the study-assistant behavior explored in Workshop #1 into a working Python application. Participants will use Google Colab and the Gemini API to connect Python to an AI model, build multiple study modes, make the assistant interactive, and customize its behavior.</p>
+   <p>We’ll learn the Python syntax needed to understand and modify this application, one step at a time.</p>
+   <p><strong>By the end, participants should be able to:</strong></p>
+   <ul class="study-list"><li>Explain at a basic level how a Python program communicates with an AI model through an API.</li><li>Use their Workshop #1 prompt as the base behavior for an application.</li><li>Build a prompt in Python using instructions, notes, a study mode, and a user request.</li><li>Use Explain, Quiz, and Flashcard modes.</li><li>Accept user input and use it to control application behavior.</li><li>Build an interactive quiz that generates a question, accepts an answer, and returns feedback.</li><li>Add or customize their own study mode.</li></ul>
+  </section>
+  <section class="study-section study-materials" aria-labelledby="workshop-2-resources">
+   <h2 id="workshop-2-resources">Workshop 2 Resources</h2>
+   ${project.workshop2Resources.map(studyResource).join('')}
+  </section>
+  <section class="study-section" aria-labelledby="study-further">
+   <div class="card study-optional"><span class="eyebrow">Take It Further</span><h2 id="study-further">Turn Your Study Assistant Into a GitHub Project</h2>
+    <p>Your completed Colab notebook already contains the pieces of a working Python application. If you want to turn it into a cleaner portfolio project, you can move the finished program into a normal Python project and publish it on GitHub.</p>
+    <p><strong>This is optional and is not required for Workshop #3.</strong></p>
+    ${link('projects/ai-study-assistant/github','GitHub Project Setup Guide →','button')}
+   </div>
+  </section>
+  <section class="study-section" aria-labelledby="study-workshop-3">
+   <span class="eyebrow">03 / IMPROVE</span><h2 id="study-workshop-3">Workshop 3 — Add Retrieval</h2>
+   <p>Our Workshop #2 application sends all of the Virelia notes to Gemini with every request. That works while the notes are small, but it does not scale well to dozens of lectures or hundreds of pages.</p>
+   <p>Workshop #3 will introduce retrieval-augmented generation (RAG): finding the relevant information first, then supplying that context to the AI model before it responds.</p>
+   <p><strong>Before Workshop #3:</strong></p>
+   <ul class="study-list"><li>Save your completed Workshop #2 Colab.</li><li>Keep access to your Gemini API key.</li><li>Bring your laptop and Google account.</li><li>GitHub setup is optional and is not required.</li></ul>
+   <p>Missed Workshop #2? You can still join Workshop #3 using starter materials.</p>
+  </section>
   <div class="quiet"><div class="actions">${link('events','View Upcoming Events')}${safeLink(C.join.groupme,'Join GroupMe ↗')}</div><p class="study-signoff">Learn AI · Build with AI · Connect through AI</p></div>
  </div>`;
 }
 
+function studyGithub(){
+ const code=text=>`<pre class="study-code"><code>${esc(text)}</code></pre>`;
+ return intro('Project Guide','Turn Your Study Assistant Into a GitHub Project','The Colab notebook from Workshop #2 is designed for learning: code is split across cells, explanations are mixed with the program, and several cells exist only for testing. This optional guide shows how to turn the finished notebook into a cleaner Python project that you can continue developing and publish on GitHub.')+`
+ <div class="section study-guide">
+  <div class="study-introduction">${link('projects/ai-study-assistant','← Back to AI Study Assistant','text-link event-return')}<div class="card study-optional"><strong>This is optional and is not required for Workshop #3.</strong></div></div>
+  <section class="study-section" aria-labelledby="guide-overview"><h2 id="guide-overview">From Colab to a Python Project</h2>
+   <p>Colab lets us build a program one cell at a time. A normal Python project usually puts the finished application code into one or more <code>.py</code> files.</p>
+   ${code('Workshop #2 Colab\n        ↓\nai-study-assistant/\n├── app.py\n├── requirements.txt\n├── README.md\n└── .gitignore')}
+   <ul class="study-list"><li><code>app.py</code> — the finished Python application</li><li><code>requirements.txt</code> — libraries the program needs</li><li><code>README.md</code> — explains the project and how to run it</li><li><code>.gitignore</code> — prevents files that should not be committed from being uploaded</li></ul>
+  </section>
+  <section class="study-section" aria-labelledby="guide-folder"><h2 id="guide-folder">1. Create Your Project Folder</h2>
+   <ol class="study-list"><li>Create a folder named something like <code>ai-study-assistant</code>.</li><li>Open it in VS Code or another code editor.</li><li>Create four files inside it: <code>app.py</code>, <code>requirements.txt</code>, <code>README.md</code>, and <code>.gitignore</code>.</li></ol>
+  </section>
+  <section class="study-section" aria-labelledby="guide-app"><h2 id="guide-app">2. Build app.py From Your Colab</h2>
+   <p>Your Colab contains teaching material, test cells, and repeated examples. <code>app.py</code> should contain only the code needed for the finished application. Don’t blindly copy every notebook cell.</p>
+   <p>Move the useful code into approximately this order:</p>
+   <ol class="study-list"><li>Imports</li><li>API-key input/setup</li><li>Gemini client and model</li><li>Virelia notes</li><li>Base instructions</li><li>Study modes</li><li><code>ask_ai()</code></li><li><code>build_prompt()</code></li><li><code>quiz_student()</code></li><li>Main menu / application logic</li><li>Any custom study modes you created</li></ol>
+   <p>If a custom mode uses its own function, define that function before the menu calls it.</p>
+   <p>Leave out Markdown cells, <code>!pip install ...</code>, workshop instructions, temporary test cells, and duplicate examples.</p>
+   <p>The Colab cells already share one Python runtime, so putting the useful code together sequentially in <code>app.py</code> recreates the same program as a normal Python script.</p>
+  </section>
+  <section class="study-section" aria-labelledby="guide-dependencies"><h2 id="guide-dependencies">3. Add Your Dependencies</h2>
+   <p>Instead of placing the Colab install command inside <code>app.py</code>, a normal Python project records its dependencies in <code>requirements.txt</code>. Add:</p>
+   ${code('google-genai\ngoogle-auth==2.49.0')}
+   <p>Open a terminal in your project folder and install them:</p>${code('pip install -r requirements.txt')}
+  </section>
+  <section class="study-section study-takeaway" aria-labelledby="guide-key"><h2 id="guide-key">4. Keep Your API Key Private</h2>
+   <p><strong>Never paste your Gemini API key directly into code that you upload to GitHub.</strong></p>
+   <p>The Workshop #2 approach using <code>getpass()</code> is acceptable because it asks the user for the key when the program starts instead of storing the key in the source code.</p>
+   <p>If you later switch to <code>.env</code> files or another secret-management method, make sure those secret files are excluded through <code>.gitignore</code>.</p>
+  </section>
+  <section class="study-section" aria-labelledby="guide-ignore"><h2 id="guide-ignore">5. Add a .gitignore</h2>
+   <p>Put these lines in <code>.gitignore</code> to prevent local environment files and possible secret files from being uploaded:</p>
+   ${code('__pycache__/\n.venv/\n.env')}
+  </section>
+  <section class="study-section" aria-labelledby="guide-readme"><h2 id="guide-readme">6. Write a README</h2>
+   <p>Your README should answer:</p><ul class="study-list"><li>What does the project do?</li><li>What technologies does it use?</li><li>How do you install the dependencies?</li><li>How do you run the application?</li><li>How do you obtain a Gemini API key?</li><li>What features did you personally add or customize?</li></ul>
+   <p>Start with a small structure like this and fill it in with your own project details:</p>
+   ${code('# AI Study Assistant\n\n## About\n\n## Features\n\n## Technologies\n\n## Setup\n\n## Running the Program\n\n## Future Improvements')}
+  </section>
+  <section class="study-section" aria-labelledby="guide-test"><h2 id="guide-test">7. Test It Locally</h2>
+   <p>You’ll need Python installed on your computer. From a terminal in your project folder, install dependencies, then run the application:</p>
+   ${code('pip install -r requirements.txt\npython app.py')}
+   <p>Verify that:</p><ul class="study-list"><li>The Gemini connection works.</li><li>Explain mode works.</li><li>Flashcard mode works.</li><li>Quiz mode works.</li><li>Missing information is handled properly.</li><li>Your custom study modes still work.</li></ul>
+  </section>
+  <section class="study-section" aria-labelledby="guide-publish"><h2 id="guide-publish">8. Publish It on GitHub</h2>
+   <p>Before publishing, review the files you’re uploading and make sure they contain no API keys. Choose whichever option feels more comfortable.</p>
+   <h3>GitHub Desktop</h3><p>Beginners can use GitHub Desktop to create a repository from the project folder, review and commit the files, then choose Publish repository. For later changes, commit and push from Desktop.</p>
+   <h3>Terminal</h3><p>Create an empty repository on GitHub first, leaving its README and other starter files unchecked because you already created them locally. In your project folder, run the commands below. Replace <code>YOUR_REPOSITORY_URL</code> with your own repository’s URL.</p>
+   ${code('git init\ngit add .\ngit commit -m "Initial AI Study Assistant"\ngit branch -M main\ngit remote add origin YOUR_REPOSITORY_URL\ngit push -u origin main')}
+  </section>
+  <section class="study-section" aria-labelledby="guide-build"><h2 id="guide-build">9. Keep Building</h2>
+   <p>The BearAI notebook provides the foundation. You can make the project more personal by experimenting with features such as:</p>
+   <ul class="study-list"><li>Additional study modes</li><li>Different prompt behavior</li><li>Your own notes</li><li>Improved menus</li><li>Saving quiz results</li><li>A GUI or web interface</li><li>Support for different subjects</li><li>Retrieval in Workshop #3</li></ul><p>These are ideas to explore at your own pace; none are required.</p>
+  </section>
+  <section class="study-section" aria-labelledby="guide-portfolio"><h2 id="guide-portfolio">Using This as a Project</h2>
+   <p>If you understand the code, customize the application, and continue developing it, this can become a small portfolio project that demonstrates Python, API integration, prompt design, and AI application development.</p>
+   <p>Be prepared to explain what you personally changed, how the API interaction works, how prompts are constructed, and how your program controls the user experience.</p>
+   <p>Credit the BearAI starter notebook and distinguish your own contributions when describing the project.</p>
+  </section>
+  <div class="quiet actions">${link('projects/ai-study-assistant','Back to AI Study Assistant →')}${link('events','View Upcoming BearAI Events →')}</div>
+ </div>`;
+}
 function community(){const highlights=(C.communityHighlights||[]).map(h=>({event:C.events.find(e=>e.id===h.eventId&&!e.hidden),index:h.photoIndex||0})).filter(h=>h.event?.photos?.[h.index]);return intro('Community','Life at BearAI.','Meet the students, see what we’ve been doing, and explore highlights from club activities.')+`<section class="section">${C.sections.gallery?`<div class="split">${photo()}<div><span class="eyebrow">Community highlights</span><h2>Learning together,<br>beyond the screen.</h2><p>A selection of moments from BearAI activities. Each event keeps its full photo gallery, captions, and recap on the Events page.</p>${highlights.length?'':badge('Picnic Palooza photo and event details to be added')}</div></div><div class="cards section-sub">${highlights.slice(1).map(({event,index})=>{const p=event.photos[index];return `<article class="card"><img class="real-photo" src="${esc(p.src)}" alt="${esc(p.alt)}"><h3>${esc(event.title)}</h3><p>${esc(p.caption)}</p>${event.photoCredit?`<p class="missing">${esc(event.photoCredit)}</p>`:''}${link('events/'+encodeURIComponent(event.id),'View event recap & gallery ↗')}</article>`;}).join('')}</div>`:''}</section>`;}
 function eventDetail(id){const event=C.events.find(e=>e.id===id&&!e.hidden&&!e.cancelled);if(!event)return intro('Event unavailable','Event not found.','Use Events to explore the available gatherings.');const past=BearEvents.classify([event]).past.length>0;if(event.id==='picnic-palooza-2026')return intro('Past event',esc(event.title),'A moment from BearAI’s community.')+`<section class="section">${link('events','← All events','text-link event-return')}${pastEventCard(event,true)}</section>`;return intro(past?'Past event':'Event details',esc(event.title),eventDescription(event))+`<section class="section">${link('events','← All events','text-link event-return')}<div class="section-sub">${eventCard(event,false,true,past)}</div></section>`;}
 function safeLink(url,label){return /^https:\/\//.test(url||'')?`<a class="text-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">${label}</a>`:pending(label);}
@@ -128,12 +214,12 @@ function focusWorkshopMaterials(){
   if(target){target.focus({preventScroll:true});target.scrollIntoView({block:'start',behavior:'instant'});}
  });
 }
-const pages={'projects/ai-study-assistant':studyAssistant,'':home,about,people,events,resources,connections,recognition,projects,community,join};
+const pages={'projects/ai-study-assistant/github':studyGithub,'projects/ai-study-assistant':studyAssistant,'':home,about,people,events,resources,connections,recognition,projects,community,join};
 function render(focus=false){
   const route=location.hash.replace(/^#\/?/,'').split('?')[0];
   document.querySelector('#nav').innerHTML=routes.map(([path,label])=>`<a href="#/${path}" ${(route===path||(['events','projects'].includes(path)&&route.startsWith(path+'/')))?'aria-current="page"':''} class="${path==='join'?'join-nav':''}">${label}</a>`).join('');
   document.querySelector('#main').innerHTML=route.startsWith('events/')?eventDetail(decodeURIComponent(route.slice(7))):pages[route]?pages[route]():intro('Page not found','Let’s reconnect.','This page doesn’t exist. Use the navigation to return to BearAI.');
-  document.title=`${routes.find(r=>r[0]===route)?.[1]||(route==='projects/ai-study-assistant'?'AI Study Assistant':route.startsWith('events/')?'Event gallery':'Page not found')} — BearAI`;
+  document.title=`${routes.find(r=>r[0]===route)?.[1]||(route==='projects/ai-study-assistant/github'?'GitHub Project Setup Guide':route==='projects/ai-study-assistant'?'AI Study Assistant':route.startsWith('events/')?'Event gallery':'Page not found')} — BearAI`;
   document.querySelector('#nav').classList.remove('open');document.querySelector('.menu').setAttribute('aria-expanded','false');
   setupNetwork();
   BearVisual.scrambleHeadings();

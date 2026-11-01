@@ -339,7 +339,23 @@ window.BEARAI = {
           "label": "Open Sample Notes"
         }
       ],
-      "workshopEventId": "workshop-1"
+      "workshopEventId": "workshop-1",
+      "workshop2Resources": [
+        {
+          "title": "Workshop #2 Student Colab",
+          "description": "Open the workshop notebook in Google Colab. Save your own copy to Google Drive before making changes, then work through the notebook from top to bottom.",
+          "url": "https://colab.research.google.com/drive/1hi6kUzUZaBouqkYSxZHHUWmOsgCbA_RJ?usp=sharing",
+          "label": "Open Student Colab",
+          "format": "Colab ↗"
+        },
+        {
+          "title": "Get a Gemini API Key",
+          "description": "Workshop #2 uses the Gemini API. Each participant should create and use their own API key through Google AI Studio.",
+          "url": "https://aistudio.google.com/apikey",
+          "label": "Open Google AI Studio",
+          "format": "API key ↗"
+        }
+      ]
     }
   ],
   "pastOfficers": [
