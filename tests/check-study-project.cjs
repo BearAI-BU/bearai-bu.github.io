@@ -43,8 +43,35 @@ for(const focus of [false,true]){
  const guide=element('#main').innerHTML;
  assert.equal(ctx.document.title,'GitHub Project Setup Guide — BearAI');
  assert(element('#nav').innerHTML.includes('href="#/projects" aria-current="page"'));
- for(const text of ['Project Guide','From Colab to a Python Project','1. Create Your Project Folder','2. Build app.py From Your Colab','3. Add Your Dependencies','4. Keep Your API Key Private','5. Add a .gitignore','6. Write a README','7. Test It Locally','8. Publish It on GitHub','9. Keep Building','Using This as a Project','google-auth==2.49.0','getpass()','YOUR_REPOSITORY_URL','Credit the BearAI starter notebook','href="#/projects/ai-study-assistant"'])assert(guide.includes(text),text);
+ for(const text of ['Project Guide','From Colab to a Python Project','1. Install Python','2. Create Your Project','3. Move From Colab to app.py','4. What Does app.py Look Like?','5. Add the Required Libraries','6. Keep Your API Key Private','7. Add a .gitignore','8. Write a README','9. Run the Project Locally','Using This as a Project','google-auth==2.49.0','getpass()','YOUR_REPOSITORY_URL','Credit the BearAI starter notebook','href="#/projects/ai-study-assistant"'])assert(guide.includes(text),text);
  assert(guide.includes('This is optional and is not required for Workshop #3.'));
+ for(const heading of ['Optional: Use a Virtual Environment','Troubleshooting','10. Create a GitHub Repository','11. Check Your Project Before Uploading','12. Publish the Project','Prefer a Visual Interface?','After You Push','Keep Building'])assert(guide.includes(heading),heading);
+ for(const command of ['python --version','py --version','python3 --version','python -m pip install -r requirements.txt','py -m pip install -r requirements.txt','python3 -m pip install -r requirements.txt','python app.py','py app.py','python3 app.py'])assert(guide.includes(command),command);
+ const blocks=[...guide.matchAll(/<pre class="study-code"><code>([\s\S]*?)<\/code><\/pre>/g)].map(m=>m[1]);
+ assert(blocks.includes('google-genai\ngoogle-auth==2.49.0'));
+ assert(blocks.includes('__pycache__/\n.venv/\n.env'));
+ const publish=blocks.find(block=>block.startsWith('git init\n'));
+ assert(publish.startsWith('git init\ngit status\ngit add .\ngit status\ngit commit'));
+ assert(guide.indexOf('11. Check Your Project Before Uploading')<guide.indexOf('git add .'));
+ assert(guide.includes('Revoke that key in Google AI Studio and create a new one.'));
+ assert(guide.includes('organization example'));
+ for(const text of ['cd folder-name','cd ..','ls -a','git --version','git config --global user.name &quot;Your Name&quot;','git config --global user.email &quot;your@email.com&quot;','noreply','Get a Gemini API key','https://aistudio.google.com/apikey','NOT a complete runnable application','(.venv)','Optional: Publish Future Changes'])assert(guide.includes(text),text);
+ assert(guide.indexOf('git --version')<guide.indexOf('The publishing workflow below runs'));
+ assert(guide.indexOf('git config --global user.name')<guide.indexOf('The publishing workflow below runs'));
+ const introduction=guide.split('class="study-introduction"')[1].split('</div></div>')[0];
+ assert(introduction.indexOf('← Back to AI Study Assistant')<introduction.indexOf('This is optional'));
+ assert(guide.includes('git status\ngit add .\ngit commit -m &quot;Describe your changes&quot;\ngit push'));
+ assert(guide.includes('.\\.venv\\Scripts\\Activate.ps1'));
+ assert(guide.includes('def ask_ai(prompt):'));
+ assert(guide.includes('placeholders, not working function implementations'));
+ assert.equal((guide.match(/href="#\/projects\/ai-study-assistant"/g)||[]).length,2);
+ for(const anchor of guide.matchAll(/<a [^>]*href="https:[^>]*>/g)){
+  assert(anchor[0].includes('target="_blank"'));assert(anchor[0].includes('rel="noopener noreferrer"'));
+ }
+ for(const url of ['https://www.python.org/downloads/','https://code.visualstudio.com/','https://desktop.github.com/'])assert(guide.includes('href="'+url+'"'));
+ for(const forbidden of ['BearAI-BU/ai-study-assistant-template','Use this template','<img','coming soon'])assert(!guide.includes(forbidden),forbidden);
+ const ids=[...guide.matchAll(/id="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);
+ assert.equal((source.match(/function studyGithub\(/g)||[]).length,1);
 }
 ctx.location.hash='#/projects/ai-study-assistant';vm.runInContext('render(true)',ctx);
 assert.equal(ctx.document.title,'AI Study Assistant — BearAI');assert(element('#main').innerHTML.includes('Workshop 2 Resources'));
