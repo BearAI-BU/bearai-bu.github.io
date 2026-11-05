@@ -265,7 +265,23 @@ window.BEARAI = {
       "status": "Confirmed",
       "timeZone": "America/Chicago",
       "flyer": "assets/resume-linkedin-2026.jpg",
-      "flyerAlt": "Résumé + LinkedIn Workshop promotional flyer"
+      "flyerAlt": "Résumé + LinkedIn Workshop promotional flyer",
+      "mainPhotoIndex": 0,
+      "previewPhotoIndex": 0,
+      "photos": [
+        {
+          "src": "assets/resume-workshop-sparks-speaking.jpg",
+          "alt": "Donna Sparks speaking to students during the Résumé + LinkedIn Workshop.",
+          "caption": "Donna Sparks speaking to students during the Résumé + LinkedIn Workshop."
+        },
+        {
+          "src": "assets/resume-workshop-template-example.jpg",
+          "alt": "Donna Sparks presenting a résumé template example during the workshop.",
+          "caption": "Donna Sparks presenting a résumé template example during the workshop."
+        }
+      ],
+      "completed": true,
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
     },
     {
       "id": "spooky-stories-2026",
@@ -280,19 +296,43 @@ window.BEARAI = {
       "status": "Confirmed",
       "timeZone": "America/Chicago",
       "flyer": "assets/spooky-stories-2026.jpg",
-      "flyerAlt": "Spooky Stories with Data promotional flyer"
+      "flyerAlt": "Spooky Stories with Data promotional flyer",
+      "mainPhotoIndex": 0,
+      "previewPhotoIndex": 0,
+      "photos": [
+        {
+          "src": "assets/spooky-stories-faculty-qa.jpg",
+          "alt": "Aidan moderating questions for the faculty panel at Spooky Stories with Data.",
+          "caption": "Aidan moderating questions for the faculty panel at Spooky Stories with Data."
+        },
+        {
+          "src": "assets/spooky-stories-social-time.jpg",
+          "alt": "Students and faculty socializing after the Spooky Stories with Data panel.",
+          "caption": "Students and faculty socializing after the Spooky Stories with Data panel."
+        },
+        {
+          "src": "assets/spooky-stories-after-qa.jpg",
+          "alt": "Conversations with faculty after the Spooky Stories with Data Q&A.",
+          "caption": "Conversations with faculty after the Spooky Stories with Data Q&A."
+        }
+      ],
+      "completed": true,
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
     },
     {
       "id": "workshop-2",
-      "start": null,
-      "end": null,
-      "location": null,
-      "description": "Details will be shared when confirmed.",
-      "title": "AI Workshop #2",
+      "start": "2026-11-05T19:30:00-06:00",
+      "end": "2026-11-05T20:30:00-06:00",
+      "location": "Cashion C311",
+      "description": "Build your own AI-powered study assistant using Python, Google Colab, and the Gemini API. Learn how to create prompts, implement study modes, and interact with a generative AI model through code. Please bring a laptop.",
+      "title": "BearAI Workshop #2 — Code the Study Assistant",
       "semester": "Fall 2026",
       "planOrder": 4,
       "proposedDate": "2026-11-05",
-      "status": "Tentative"
+      "status": "Confirmed",
+      "timeZone": "America/Chicago",
+      "flyer": "assets/workshop-2-2026.jpg",
+      "flyerAlt": "BearAI Workshop 2: Code a Prompt-Based Study Assistant. Thursday, November 5, 7:30–8:30 PM, Cashion C311. Bring your laptop."
     },
     {
       "id": "faculty-research-session",
