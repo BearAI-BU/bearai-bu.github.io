@@ -11,14 +11,6 @@ window.BEAR_RESOURCES = [
           {
             "text": "Learn Python through Harvard’s video lessons, coding exercises, and a final project. Start with variables, functions, and loops, then learn to debug your code and build programs of your own.",
             "italic": false
-          },
-          {
-            "text": "P.S. I, Alessandro, the current president of BearAI, am using this course to learn Python!",
-            "italic": true
-          },
-          {
-            "text": "Free course and exercises; an optional verified edX certificate costs extra.",
-            "italic": true
           }
         ]
       },

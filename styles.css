@@ -113,3 +113,7 @@ main{background:radial-gradient(ellipse 560px 420px at calc(50% + 340px) 360px,#
 
 /* Separate guide navigation from the optional-workshop notice. */
 .study-guide .study-introduction{display:grid;gap:24px}.study-guide .study-introduction>.event-return{justify-self:start;margin:0;padding:8px 0;color:var(--gold);line-height:1.5}.study-guide .study-introduction>.event-return:hover{text-decoration:underline;text-underline-offset:5px}
+
+/* Shared return links: preserve the page background. */
+.event-return,.event-return:hover{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border:1px solid var(--gold);border-radius:4px;background:transparent;background-image:none;color:var(--gold);font-size:.9rem;font-weight:500;line-height:1.4;text-decoration:none;box-shadow:none}
+.event-return:focus-visible{outline:2px solid var(--gold);outline-offset:4px}

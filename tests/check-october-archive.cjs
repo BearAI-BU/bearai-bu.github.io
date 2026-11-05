@@ -16,6 +16,6 @@ console.log('Completed semester order, status visibility, shared slides, photo c
 
 const community=vm.runInContext('community()',c);
 assert.equal(data.communityHighlights.filter(h=>h.eventId==='general-interest').length,1);
-assert.equal((community.match(/Photos by Noelle, Social Media &amp; Outreach Chair/g)||[]).length,4);
+assert.equal((community.match(/Photos by Noelle, Social Media &amp; Outreach Chair/g)||[]).length,6);
 assert(community.match(/<figure class="featured-photo">[\s\S]*?<\/figure>/)[0].includes('Photos by Noelle'));
 assert(!html.includes('View Workshop 1 Slides'));

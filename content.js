@@ -256,7 +256,7 @@ window.BEARAI = {
       "id": "resume-linkedin-2026",
       "start": "2026-10-29T17:30:00-05:00",
       "end": "2026-10-29T18:30:00-05:00",
-      "location": "Cashion 311",
+      "location": "Cashion C311",
       "description": "Join BearAI for a Résumé + LinkedIn Workshop led by a Baylor staff member. Get guidance on strengthening your résumé and LinkedIn profile. All students are welcome!",
       "title": "Résumé + LinkedIn Workshop",
       "semester": "Fall 2026",
@@ -384,7 +384,7 @@ window.BEARAI = {
         {
           "title": "Workshop #2 Student Colab",
           "description": "Open the workshop notebook in Google Colab. Save your own copy to Google Drive before making changes, then work through the notebook from top to bottom.",
-          "url": "https://colab.research.google.com/drive/1hi6kUzUZaBouqkYSxZHHUWmOsgCbA_RJ?usp=sharing",
+          "url": "https://colab.research.google.com/drive/1VQK5HZe-cMBqk4LLstGTTm8Xs8855l-1?usp=sharing",
           "label": "Open Student Colab",
           "format": "Colab ↗"
         },
@@ -438,6 +438,14 @@ window.BEARAI = {
   "communityHighlights": [
     {
       "eventId": "workshop-1",
+      "photoIndex": 0
+    },
+    {
+      "eventId": "resume-linkedin-2026",
+      "photoIndex": 0
+    },
+    {
+      "eventId": "spooky-stories-2026",
       "photoIndex": 0
     },
     {

@@ -6,7 +6,7 @@ vm.createContext(c);vm.runInContext(read('content.js'),c);vm.runInContext(read('
 const records=c.window.BEARAI.events,groups=api.classify(records,now);
 assert.equal(new Set(records.map(e=>e.id)).size,records.length);
 for(const [id,count,cover,date,location]of [
- ['resume-linkedin-2026',2,'assets/resume-workshop-sparks-speaking.jpg','2026-10-29T17:30:00-05:00','Cashion 311'],
+ ['resume-linkedin-2026',2,'assets/resume-workshop-sparks-speaking.jpg','2026-10-29T17:30:00-05:00','Cashion C311'],
  ['spooky-stories-2026',3,'assets/spooky-stories-faculty-qa.jpg','2026-10-28T18:00:00-05:00','Tidwell Bible Building GL06']]){
  const e=records.find(e=>e.id===id);c.e=e;
  assert(e.completed);assert.equal(e.photoCredit,records.find(e=>e.id==='workshop-1').photoCredit);assert(groups.past.includes(e));assert(!groups.upcoming.includes(e));

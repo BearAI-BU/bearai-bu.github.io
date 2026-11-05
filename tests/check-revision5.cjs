@@ -1,7 +1,7 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const ctx=vm.createContext({window:{}});vm.runInContext(fs.readFileSync('resources.js','utf8'),ctx);
 const json=JSON.stringify(ctx.window.BEAR_RESOURCES);let hash=2166136261;for(let i=0;i<json.length;i++)hash=Math.imul(hash^json.charCodeAt(i),16777619);
-assert.equal(hash>>>0,1699792688);assert.equal(json.length,3786);console.log('Rendered resource text, all nine URLs, category descriptions, and italic notes match the supplied content.');
+assert.equal(hash>>>0,2688920565);assert.equal(json.length,3568);console.log('Rendered resource text, all nine URLs, category descriptions, and remaining notes match the revised content.');
 const elements={pause:{addEventListener(){}},trigger:{disabled:false,addEventListener(){}},status:{textContent:''}};
 let assembling=false;
 const network={querySelector(s){return s==='.motion-control'?elements.pause:s==='.bear-trigger'?elements.trigger:elements.status;},querySelectorAll(){return [];},classList:{add(){assembling=true},remove(){},toggle(){return false}},setAttribute(){},addEventListener(){},removeEventListener(){}};

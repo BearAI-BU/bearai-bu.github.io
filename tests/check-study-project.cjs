@@ -23,7 +23,7 @@ for(const focus of [false,true]){vm.runInContext(`render(${focus})`,ctx);assert(
 // Workshop 2 resources have explicit formats; legacy PDF records still render.
 assert.equal(project.workshop2Resources.length,2);
 const [colab,apiKey]=project.workshop2Resources;
-assert.equal(colab.url,'https://colab.research.google.com/drive/1hi6kUzUZaBouqkYSxZHHUWmOsgCbA_RJ?usp=sharing');
+assert.equal(colab.url,'https://colab.research.google.com/drive/1VQK5HZe-cMBqk4LLstGTTm8Xs8855l-1?usp=sharing');
 assert.equal(apiKey.url,'https://aistudio.google.com/apikey');
 for(const resource of project.workshop2Resources){
  const html=vm.runInContext(`studyResource(${JSON.stringify(resource)})`,ctx);
@@ -32,7 +32,7 @@ for(const resource of project.workshop2Resources){
 assert(vm.runInContext('studyResource({file:"assets/future.pdf",label:"Read",format:"PDF ↗"})',ctx).includes('href="assets/future.pdf"'));
 assert(vm.runInContext('studyResource({file:"assets/legacy.pdf",label:"Read"})',ctx).includes('PDF ↗'));
 assert(vm.runInContext('studyResource({url:"https://example.com",title:"<example>",label:"Open",format:"Web ↗"})',ctx).includes('&lt;example&gt;'));
-const headings=['Workshop 1 Takeaway','Workshop 2 — Code the Study Assistant','Workshop 2 Resources','Workshop 3 — Add Retrieval'];
+const headings=['Workshop 1 Takeaway','Workshop 2 — Code the Study Assistant','Workshop 2 Resources','Workshop 2 Takeaway','Workshop 3 — Add Retrieval'];
 for(let i=1;i<headings.length;i++)assert(page.indexOf(headings[i-1])<page.indexOf(headings[i]),headings[i]);
 for(const text of ['Design → Code → Improve','01 / DESIGN','02 / CODE','03 / IMPROVE','starter materials'])assert(page.includes(text),text);
 for(const forbidden of ['workshop-2-slides','STUDENT_COLAB_URL','cheat-sheet','reference notebook','officer notebook'])assert(!page.includes(forbidden),forbidden);
