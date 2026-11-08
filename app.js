@@ -70,6 +70,7 @@ function studyAssistant(){
  const project=C.projects.find(p=>p.id==='ai-study-assistant');
  const workshop=C.events.find(e=>e.id===project.workshopEventId);
  const materials=[...project.materials,...(workshop?.materials||[])];
+ const workshop2=C.events.find(e=>e.id==='workshop-2');
  return intro('Project',esc(project.title),'Build a personalized AI study assistant across three hands-on BearAI workshops.')+`
  <div class="section study-project">
   <div class="study-introduction">
@@ -109,7 +110,7 @@ function studyAssistant(){
   </div>
   <section class="study-section study-takeaway" aria-labelledby="study-takeaway"><h2 id="study-takeaway">Workshop 1 Takeaway</h2><p>Participants should leave with reusable instructions describing how their assistant uses notes, explains material, quizzes them, provides feedback, and handles missing information.</p><p><strong>Save your prompt—you’ll build on these ideas in Workshop 2.</strong></p></section>
   <section class="study-section" aria-labelledby="study-workshop-2">
-   <span class="eyebrow">02 / CODE</span><h2 id="study-workshop-2">Workshop 2 — Code the Study Assistant</h2>
+   <span class="eyebrow">Workshop 2${workshop2?.completed?' · Completed':''}</span><h2 id="study-workshop-2">Workshop 2 — Code the Study Assistant</h2>
    <p>Workshop #2 turns the study-assistant behavior explored in Workshop #1 into a working Python application. Participants will use Google Colab and the Gemini API to connect Python to an AI model, build multiple study modes, make the assistant interactive, and customize its behavior.</p>
    <p>We’ll learn the Python syntax needed to understand and modify this application, one step at a time.</p>
    <p><strong>By the end, participants should be able to:</strong></p>
@@ -117,7 +118,7 @@ function studyAssistant(){
   </section>
   <section class="study-section study-materials" aria-labelledby="workshop-2-resources">
    <h2 id="workshop-2-resources">Workshop 2 Resources</h2>
-   ${project.workshop2Resources.map(studyResource).join('')}
+   ${[...project.workshop2Resources,...(workshop2?.materials||[])].map(studyResource).join('')}
   </section>
   <div class="study-section study-practice">
    <section aria-labelledby="study-activities-2"><h2 id="study-activities-2">What Participants Will Do</h2>

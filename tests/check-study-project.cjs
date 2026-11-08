@@ -35,7 +35,10 @@ assert(vm.runInContext('studyResource({url:"https://example.com",title:"<example
 const headings=['Workshop 1 Takeaway','Workshop 2 — Code the Study Assistant','Workshop 2 Resources','Workshop 2 Takeaway','Workshop 3 — Add Retrieval'];
 for(let i=1;i<headings.length;i++)assert(page.indexOf(headings[i-1])<page.indexOf(headings[i]),headings[i]);
 for(const text of ['Design → Code → Improve','01 / DESIGN','02 / CODE','03 / IMPROVE','starter materials'])assert(page.includes(text),text);
-for(const forbidden of ['workshop-2-slides','STUDENT_COLAB_URL','cheat-sheet','reference notebook','officer notebook'])assert(!page.includes(forbidden),forbidden);
+for(const forbidden of ['STUDENT_COLAB_URL','cheat-sheet','reference notebook','officer notebook'])assert(!page.includes(forbidden),forbidden);
+assert(page.includes('Workshop 2 · Completed'));
+assert(page.includes('View Workshop 2 Slides'));assert(page.includes('href="assets/workshop-2-slides.pdf"'));
+assert.equal(fs.readFileSync(path.join(root,'assets/workshop-2-slides.pdf')).subarray(0,5).toString(),'%PDF-');
 // Removed guide rejects direct visits and refreshes; project resources remain available.
 ctx.location.hash='#/projects/ai-study-assistant/github';
 for(const focus of [false,true]){

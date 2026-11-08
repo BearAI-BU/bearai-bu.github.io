@@ -332,18 +332,41 @@ window.BEARAI = {
       "status": "Confirmed",
       "timeZone": "America/Chicago",
       "flyer": "assets/workshop-2-2026.jpg",
-      "flyerAlt": "BearAI Workshop 2: Code a Prompt-Based Study Assistant. Thursday, November 5, 7:30–8:30 PM, Cashion C311. Bring your laptop."
-    },
-    {
-      "id": "faculty-research-session",
-      "title": "AI Research / Faculty Info Session",
-      "start": null,
-      "end": null,
-      "proposedDate": null,
-      "status": "Tentative",
-      "detailsPending": true,
-      "description": "Details pending.",
-      "semester": "Fall 2026"
+      "flyerAlt": "BearAI Workshop 2: Code a Prompt-Based Study Assistant. Thursday, November 5, 7:30–8:30 PM, Cashion C311. Bring your laptop.",
+      "completed": true,
+      "mainPhotoIndex": 0,
+      "previewPhotoIndex": 0,
+      "photos": [
+        {
+          "src": "assets/workshop-2-sandro-game-plan.jpg",
+          "alt": "Alessandro explaining the game plan for BearAI Workshop #2.",
+          "caption": "Alessandro explaining the game plan for BearAI Workshop #2."
+        },
+        {
+          "src": "assets/workshop-2-aubrey-python-dictionary.jpg",
+          "alt": "Aubrey explaining how a Python dictionary works during BearAI Workshop #2.",
+          "caption": "Aubrey explaining how a Python dictionary works during BearAI Workshop #2."
+        },
+        {
+          "src": "assets/workshop-2-lucas-api-key.jpg",
+          "alt": "Lucas explaining where to enter a Gemini API key in the workshop notebook.",
+          "caption": "Lucas explaining where to enter a Gemini API key in the workshop notebook."
+        },
+        {
+          "src": "assets/workshop-2-sandro-colab-help.jpg",
+          "alt": "Alessandro helping a member with the Google Colab notebook during BearAI Workshop #2.",
+          "caption": "Alessandro helping a member with the Google Colab notebook during BearAI Workshop #2."
+        }
+      ],
+      "materials": [
+        {
+          "title": "Workshop 2 Slides",
+          "description": "Review the Workshop 2 presentation on building a Python study assistant with Google Colab and the Gemini API.",
+          "file": "assets/workshop-2-slides.pdf",
+          "label": "View Workshop 2 Slides"
+        }
+      ],
+      "photoCredit": "Photos by Noelle, Social Media & Outreach Chair"
     },
     {
       "id": "workshop-3",
@@ -438,6 +461,10 @@ window.BEARAI = {
   "communityHighlights": [
     {
       "eventId": "workshop-1",
+      "photoIndex": 0
+    },
+    {
+      "eventId": "workshop-2",
       "photoIndex": 0
     },
     {

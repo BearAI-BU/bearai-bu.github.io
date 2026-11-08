@@ -52,10 +52,10 @@ for(const [photo,scale] of [["lucas.jpg",1.8],["chelsey.jpg",1.9]]){const office
 assert(events.indexOf('Upcoming Events')<events.indexOf('Fall 2026'));
 assert(events.indexOf('Fall 2026')<events.indexOf('Past Events'));
 assert(!events.includes('Dates to be confirmed'));
-const plans=context.window.BEARAI.events.filter(e=>e.semester==='Fall 2026');assert.equal(plans.length,8);
+const plans=context.window.BEARAI.events.filter(e=>e.semester==='Fall 2026');assert.equal(plans.length,7);
 assert.equal(plans.filter(e=>e.id==='workshop-1').length,1);
-assert.equal(plans.find(e=>e.id==='faculty-research-session').proposedDate,null);assert(!plans.some(e=>e.id==='lockheed-ai-speaker'));
-assert(!events.includes('November 12'));assert(events.includes('TBD'));
+assert(!plans.some(e=>e.id==='faculty-research-session'));assert(!plans.some(e=>e.id==='lockheed-ai-speaker'));
+assert(!events.includes('November 12'));assert(!events.includes('TBD'));
 assert(events.includes('href="#/events/workshop-1"'));assert(!home.includes('href="#/events/service-event-2026"'));
 assert(events.includes('assets/workshop-1-2026.png'));
 const future=Date.parse('2026-12-01T00:00:00Z');assert.equal(api.classify(plans,future).past.length,6);
@@ -69,7 +69,7 @@ for(const html of [vm.runInContext('eventCard(C.events.find(e=>e.id==="workshop-
  for(const text of ['America/Chicago','Details pending','Workshop 1 is planned','Event photos coming soon','Shorty'])assert(!html.includes(text),text);
 }
 assert.equal(planned.timeZone,'America/Chicago');
-assert.equal(api.next(context.window.BEARAI.events,now).id,'workshop-2');
+assert.equal(api.next(context.window.BEARAI.events,now),null);
 assert(events.lastIndexOf(planned.title)>events.indexOf('Past Events'));
 assert(workshopDetail.includes('Event photos'));assert(!workshopDetail.includes('View Workshop 1 Slides'));
 console.log('Completed workshop details, preserved logistics, shared flyer and slides passed.');
@@ -84,5 +84,5 @@ for(const html of [vm.runInContext("eventDetail('service-event-2026')",context)]
 }
 assert(events.indexOf(service.title)<events.indexOf(planned.title));
 assert(events.lastIndexOf(planned.title)>events.indexOf('Past Events'));
-assert.equal(api.next(context.window.BEARAI.events,now).id,'workshop-2');
+assert.equal(api.next(context.window.BEARAI.events,now),null);
 console.log('Completed service event and exclusion from homepage selection passed.');

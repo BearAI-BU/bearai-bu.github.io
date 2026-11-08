@@ -18,14 +18,14 @@ for(const [id,count,cover,date,location]of [
  assert.equal((preview.match(/<img /g)||[]).length,2);
 }
 const w2=records.find(e=>e.id==='workshop-2');c.e=w2;
-assert.equal(api.next(records,now),w2);assert.equal(w2.status,'Confirmed');
+assert.equal(api.next(records,now),null);assert(w2.completed);assert(groups.past.includes(w2));assert(!records.some(e=>e.id==='faculty-research-session'));assert.equal(w2.status,'Confirmed');
 assert.equal(w2.start,'2026-11-05T19:30:00-06:00');assert.equal(w2.end,'2026-11-05T20:30:00-06:00');
 assert.equal(w2.timeZone,'America/Chicago');assert.equal(w2.location,'Cashion C311');
-assert.equal(w2.flyer,'assets/workshop-2-2026.jpg');assert(!w2.photos);
+assert.equal(w2.flyer,'assets/workshop-2-2026.jpg');assert.equal(w2.photos.length,4);assert.equal(w2.photos[w2.mainPhotoIndex].src,'assets/workshop-2-sandro-game-plan.jpg');assert.equal(w2.previewPhotoIndex,0);assert.equal(w2.photoCredit,records.find(e=>e.id==='workshop-1').photoCredit);
 const detail=vm.runInContext('eventDetail(e.id)',c);
 for(const text of ['Thursday, November 5, 2026','7:30–8:30 PM','C311',w2.flyer,'Please bring a laptop.'])assert(detail.includes(text),text);
-assert(!detail.includes('Past event'));assert(!detail.includes('Event photos'));
-assert(api.classify(records,Date.parse(w2.start)).ongoing.includes(w2));
+assert(detail.includes('Past event'));assert(detail.includes('Event photos'));for(const p of w2.photos){assert(detail.includes(p.src));assert(p.alt);assert(fs.existsSync(path.join(root,p.src)));}assert.equal((vm.runInContext('eventCard(e)',c).match(/<img /g)||[]).length,2);
+assert(api.classify(records,Date.parse(w2.start)).past.includes(w2));
 assert(api.classify(records,Date.parse(w2.end)).past.includes(w2));
 for(const file of ['app.js','content.js','index.html','resources.js']){
  const text=read(file);
